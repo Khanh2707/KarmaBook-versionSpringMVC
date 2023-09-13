@@ -17,8 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import database.KarmaJDBC;
 import model.Author;
 import model.Book;
+import model.Image;
 import model.Publisher;
+import model.Role_User;
 import model.Supplier;
+import model.Type_Image;
+import model.User;
 
 @Controller
 @RequestMapping("/")
@@ -30,8 +34,6 @@ public class homeController {
 	@GetMapping
 	@Transactional
 	public String Default(ModelMap modelMap) {
-		
-		modelMap.addAttribute("jstl", "cout jstl");
 		
 		ApplicationContext ac = new ClassPathXmlApplicationContext("IoC.xml");
 		
@@ -84,13 +86,32 @@ public class homeController {
 //		session.save(b1);
 		
 		
+//		List<User> users = new ArrayList<User>();
+//		User u1 = new User("Long@gmail.com", "Long@123", "Long");
+//		users.add(u1);
+//		Role_User role_user = new Role_User("Khách", users);
+//		session.save(role_user);
 		
-		String selectAll = "FROM karma.book";
-		List<Book> list = session.createQuery(selectAll).getResultList();
 		
-		for (Book book : list) {
-			System.out.println(book.toString());
-		}
+		
+//		List<Image> images = new ArrayList<Image>();
+//		Image i1 = new Image("path 123");
+//		images.add(i1);
+//		
+//		Book b1 = new Book("Book image 1", 50000, 2030, "test ảnh bìa", "như short", images);
+//		Type_Image ti1 = new Type_Image("ảnh 360", "toàn cảnh", images);
+//		
+//		session.save(b1);
+//		session.save(ti1);
+		
+		
+		
+//		String selectAll = "FROM karma.book";
+//		List<Book> list = session.createQuery(selectAll).getResultList();
+//		
+//		for (Book book : list) {
+//			System.out.println(book.toString());
+//		}
 		
 		return "user/home";
 		

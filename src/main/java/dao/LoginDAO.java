@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 
 import dbInterface.LoginMethods;
+import model.Role_User;
 import model.User;
 
 @Repository
@@ -35,16 +36,30 @@ public class LoginDAO implements LoginMethods {
 
 	@Override
 	@Transactional
-	public boolean RegisterUser(User user) {
+	public boolean RegisterUser(Role_User role_user) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		int check = (int) session.save(user);
-		
-		if (check > 0) {
+		try {
+			session.update(role_user);
 			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	
+	}
+
+	@Override
+	@Transactional
+	public Role_User GetRoleUser_User() {
+		Session session = sessionFactory.getCurrentSession();
+		try {
+			Role_User role_user = (Role_User) session.createQuery("FROM karma.role_user WHERE idRoleUser = 1").getSingleResult();
+			return role_user;
+		}
+		catch (Exception e) {
+			return null;
 		}
 		
-		return false;
 	}
 	
 }

@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +30,15 @@ public class registerController {
 	
 	@PostMapping
 	public String RegisterUser(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+		Role_User role_user = loginService.GetRoleUser_User();
 		User user = new User(email, password, name);
 		
-		boolean res = loginService.RegisterUser(user);
+		List<User> users = new ArrayList<User>();
+		users.add(user);
+		
+		role_user.setUsers(users);
+		
+		boolean res = loginService.RegisterUser(role_user);
 		
 		if (res) {
 			return "redirect:/login";

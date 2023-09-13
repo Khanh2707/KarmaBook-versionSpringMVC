@@ -20,23 +20,23 @@ public class Role_User {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idRoleUser")
-	List<User> user;
+	List<User> users;
 	
 	
 	public Role_User() {
 	}
 
-	public Role_User(String nameRoleUser, List<User> user) {
+	public Role_User(String nameRoleUser, List<User> users) {
 		this.nameRoleUser = nameRoleUser;
-		this.user = user;
+		this.users = users;
 	}
 
-	public List<User> getUser() {
-		return user;
+	public List<User> getUsers() {
+		return users;
 	}
 
-	public void setUser(List<User> user) {
-		this.user = user;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	public int getIdRoleUser() {

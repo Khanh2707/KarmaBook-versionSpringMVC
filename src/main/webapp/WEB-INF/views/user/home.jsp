@@ -91,9 +91,6 @@
 						<li class="wrapper_product__li-1">
 							<span class="wrapper_product__li-1__a"> flash sale </span>
 						</li>
-						<li class="wrapper_product__li-1">
-							<span class="wrapper_product__li-1__a" id="jstl"> <c:out value="${jstl }" /> </span>
-						</li>
 					</ul>
 
 					<!-- body__wrapper_product__menu -->

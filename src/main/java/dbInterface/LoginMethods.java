@@ -5,6 +5,6 @@ import model.User;
 
 public interface LoginMethods {
 	User AuthenticationLogin(String email, String password);
-
-	boolean RegisterUser(User user);
+	Role_User GetRoleUser_User();
+	boolean RegisterUser(Role_User role_user);
 }

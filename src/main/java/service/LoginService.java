@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import dao.LoginDAO;
 import dbInterface.LoginMethods;
+import model.Role_User;
 import model.User;
 
 @Service
@@ -19,9 +20,15 @@ public class LoginService implements LoginMethods {
 	}
 
 	@Override
-	public boolean RegisterUser(User user) {
+	public boolean RegisterUser(Role_User role_user) {
 		
-		return loginDAO.RegisterUser(user);
+		return loginDAO.RegisterUser(role_user);
+	}
+
+	@Override
+	public Role_User GetRoleUser_User() {
+
+		return loginDAO.GetRoleUser_User();
 	}
 	
 }

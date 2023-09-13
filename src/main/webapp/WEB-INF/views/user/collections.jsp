@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,198 +47,41 @@
 					</div>
 				</div>
 				<div class="page_product__body">
-					<div class="list_product-div_out">
-						<div class="list_product-div_in">
-							<div class="list_product-div_in-img">
-								<a href="#"><img src="" alt=""></a>
-							</div>
-							<div class="list_product-div_in-info_book_short_des">
-								<span> 
-									<a href="#">
-										abc 
-									</a>
-								</span>
-								<div class="div_in-price">
-									<span class="div_in-price-sale">abc<ins>đ</ins></span> 
-									<span class="div_in-price-origin">
-										<del>abc<ins>đ</ins></del>
+				
+					<c:forEach var="book" items="${allBooks }">
+						<div class="list_product-div_out">
+							<div class="list_product-div_in">
+								<div class="list_product-div_in-img">
+									<a href="product/${book.idBook }"><img src="${book.images[0].pathImage }" alt=""></a>
+								</div>
+								<div class="list_product-div_in-info_book_short_des">
+									<span> 
+										<a href="product">
+											${book.nameBook }
+										</a>
 									</span>
+									<div class="div_in-price">
+										<span class="div_in-price-sale"><fmt:formatNumber type="number" value="${(book.priceBook * (100 - book.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins></span> 
+										<span class="div_in-price-origin">
+											<del>${book.priceBook }<ins>đ</ins></del>
+										</span>
+									</div>
+								</div>
+								<div class="div_in__choice_hover">
+									<div class="eye">
+										<i class="fa-solid fa-eye"></i>
+									</div>
+									<div>
+										<i class="fa-solid fa-bag-shopping"></i>
+									</div>
+									<div>
+										<i class="fa-solid fa-cart-shopping"></i>
+									</div>
 								</div>
 							</div>
-							<div class="div_in__choice_hover">
-								<div class="eye">
-									<i class="fa-solid fa-eye"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-bag-shopping"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-cart-shopping"></i>
-								</div>
-							</div>
+							<span class="div_out-label_sale">-${book.promotions[0].discountPromotion }%</span>
 						</div>
-						<span class="div_out-label_sale">-%</span>
-					</div>
-					<div class="list_product-div_out">
-						<div class="list_product-div_in">
-							<div class="list_product-div_in-img">
-								<a href="#"><img src="" alt=""></a>
-							</div>
-							<div class="list_product-div_in-info_book_short_des">
-								<span> 
-									<a href="#">
-										abc 
-									</a>
-								</span>
-								<div class="div_in-price">
-									<span class="div_in-price-sale">abc<ins>đ</ins></span> 
-									<span class="div_in-price-origin">
-										<del>abc<ins>đ</ins></del>
-									</span>
-								</div>
-							</div>
-							<div class="div_in__choice_hover">
-								<div class="eye">
-									<i class="fa-solid fa-eye"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-bag-shopping"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-cart-shopping"></i>
-								</div>
-							</div>
-						</div>
-						<span class="div_out-label_sale">-%</span>
-					</div>
-					<div class="list_product-div_out">
-						<div class="list_product-div_in">
-							<div class="list_product-div_in-img">
-								<a href="#"><img src="" alt=""></a>
-							</div>
-							<div class="list_product-div_in-info_book_short_des">
-								<span> 
-									<a href="#">
-										abc 
-									</a>
-								</span>
-								<div class="div_in-price">
-									<span class="div_in-price-sale">abc<ins>đ</ins></span> 
-									<span class="div_in-price-origin">
-										<del>abc<ins>đ</ins></del>
-									</span>
-								</div>
-							</div>
-							<div class="div_in__choice_hover">
-								<div class="eye">
-									<i class="fa-solid fa-eye"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-bag-shopping"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-cart-shopping"></i>
-								</div>
-							</div>
-						</div>
-						<span class="div_out-label_sale">-%</span>
-					</div>
-					<div class="list_product-div_out">
-						<div class="list_product-div_in">
-							<div class="list_product-div_in-img">
-								<a href="#"><img src="" alt=""></a>
-							</div>
-							<div class="list_product-div_in-info_book_short_des">
-								<span> 
-									<a href="#">
-										abc 
-									</a>
-								</span>
-								<div class="div_in-price">
-									<span class="div_in-price-sale">abc<ins>đ</ins></span> 
-									<span class="div_in-price-origin">
-										<del>abc<ins>đ</ins></del>
-									</span>
-								</div>
-							</div>
-							<div class="div_in__choice_hover">
-								<div class="eye">
-									<i class="fa-solid fa-eye"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-bag-shopping"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-cart-shopping"></i>
-								</div>
-							</div>
-						</div>
-						<span class="div_out-label_sale">-%</span>
-					</div>
-					<div class="list_product-div_out">
-						<div class="list_product-div_in">
-							<div class="list_product-div_in-img">
-								<a href="#"><img src="" alt=""></a>
-							</div>
-							<div class="list_product-div_in-info_book_short_des">
-								<span> 
-									<a href="#">
-										abc 
-									</a>
-								</span>
-								<div class="div_in-price">
-									<span class="div_in-price-sale">abc<ins>đ</ins></span> 
-									<span class="div_in-price-origin">
-										<del>abc<ins>đ</ins></del>
-									</span>
-								</div>
-							</div>
-							<div class="div_in__choice_hover">
-								<div class="eye">
-									<i class="fa-solid fa-eye"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-bag-shopping"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-cart-shopping"></i>
-								</div>
-							</div>
-						</div>
-						<span class="div_out-label_sale">-%</span>
-					</div>
-					<div class="list_product-div_out">
-						<div class="list_product-div_in">
-							<div class="list_product-div_in-img">
-								<a href="#"><img src="" alt=""></a>
-							</div>
-							<div class="list_product-div_in-info_book_short_des">
-								<span> 
-									<a href="#">
-										abc 
-									</a>
-								</span>
-								<div class="div_in-price">
-									<span class="div_in-price-sale">abc<ins>đ</ins></span> 
-									<span class="div_in-price-origin">
-										<del>abc<ins>đ</ins></del>
-									</span>
-								</div>
-							</div>
-							<div class="div_in__choice_hover">
-								<div class="eye">
-									<i class="fa-solid fa-eye"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-bag-shopping"></i>
-								</div>
-								<div>
-									<i class="fa-solid fa-cart-shopping"></i>
-								</div>
-							</div>
-						</div>
-						<span class="div_out-label_sale">-%</span>
-					</div>
+					</c:forEach>
 				</div>
 
 				<div class="page_product__footer">

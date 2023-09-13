@@ -18,9 +18,9 @@ public class User {
 	private String password;
 	private String name;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "idRoleUser")
-//	Role_User role_user;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idRoleUser")
+	Role_User role_user;
 	
 	public User() {
 	}
@@ -31,13 +31,13 @@ public class User {
 		this.name = name;
 	}
 
-//	public Role_User getRole_user() {
-//		return role_user;
-//	}
-//
-//	public void setRole_user(Role_User role_user) {
-//		this.role_user = role_user;
-//	}
+	public Role_User getRole_user() {
+		return role_user;
+	}
+
+	public void setRole_user(Role_User role_user) {
+		this.role_user = role_user;
+	}
 
 	public int getIdUser() {
 		return idUser;

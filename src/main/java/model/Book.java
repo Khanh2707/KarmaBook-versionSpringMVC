@@ -4,13 +4,18 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity( name = "karma.book" )
 public class Book {
@@ -32,6 +37,11 @@ public class Book {
 	@JoinColumn(name = "idPublisher")
 	Publisher publisher;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
+	@JoinColumn(name = "idBook")
+	List<Image> images;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "karma.both_book_author",
 	joinColumns = {@JoinColumn(name = "idBookA", referencedColumnName = "idBook")},
@@ -51,6 +61,7 @@ public class Book {
 	List<Version> versions;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@JoinTable(name = "karma.both_book_promotion",
 	joinColumns = {@JoinColumn(name = "idBookP", referencedColumnName = "idBook")},
 	inverseJoinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName = "idPromotion")})
@@ -58,14 +69,15 @@ public class Book {
 
 	public Book() {
 	}
-	
+
 	public Book(String nameBook, int priceBook, int yearPublicationBook, String shortDescriptionBook,
-			String fullDescriptionBook) {
+			String fullDescriptionBook, List<Image> images) {
 		this.nameBook = nameBook;
 		this.priceBook = priceBook;
 		this.yearPublicationBook = yearPublicationBook;
 		this.shortDescriptionBook = shortDescriptionBook;
 		this.fullDescriptionBook = fullDescriptionBook;
+		this.images = images;
 	}
 
 	public List<Category> getCategories() {
@@ -98,6 +110,14 @@ public class Book {
 
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	public Publisher getPublisher() {
@@ -168,9 +188,7 @@ public class Book {
 	public String toString() {
 		return "Book [idBook=" + idBook + ", nameBook=" + nameBook + ", priceBook=" + priceBook
 				+ ", yearPublicationBook=" + yearPublicationBook + ", shortDescriptionBook=" + shortDescriptionBook
-				+ ", fullDescriptionBook=" + fullDescriptionBook + ", supplier=" + supplier + ", publisher=" + publisher
-				+ ", authors=" + authors + ", categories=" + categories + ", versions=" + versions + ", promotions="
-				+ promotions + "]";
+				+ ", fullDescriptionBook=" + fullDescriptionBook + "]";
 	}
 
 	
