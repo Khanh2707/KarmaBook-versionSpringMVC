@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .body {
-    width: 80%;
+    width: 1200px;
     margin: 0px auto;
     padding-top: 50px;
     padding-bottom: 30px;
@@ -39,13 +39,16 @@
 }
 
 .detail_product__img {
-    width: 40%;
+    width: 480px;
+    height: 690px;
     position: relative;
     text-align: center;
 }
 
 .detail_product__img img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .div_out-label_sale {
@@ -109,8 +112,12 @@
     color: var(--text_69);
     font-weight: bolder;
     display: inline-block;
-    width: 120px;
+    width: 170px;
     margin-bottom: 5px;
+}
+
+.detail_product__info-description-author-value:hover {
+	color: var(--main_color);
 }
 
 .detail_product__info-content {

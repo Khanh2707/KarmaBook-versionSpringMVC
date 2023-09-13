@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,59 +14,83 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="resources/css/detail_book.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/css_global/base.css">
+<link rel="stylesheet" href="resources/css/detail_book.css">
 </head>
 <body>
 	<jsp:include page="header.jsp" />
+	<c:set var="bookById" value="${bookById }" />
 	<div class="body">
 		<div class="body__path_category_product">
-			<a href="#">Trang chủ</a> <span class="t">/</span> <a href="#">abc</a>
-			<span class="t">/</span> <span>abc</span>
+			<a href="<c:url value="/" />">Trang chủ</a>
+			<span class="t">/</span>
+			<a href="#">abc</a>
+			<span class="t">/</span>
+			<span>${bookById.nameBook }</span>
 		</div>
 		<div class="body__detail_product">
 			<div class="detail_product__img_and_info">
 				<div class="detail_product__img">
-					<img src="" alt=""> <span class="div_out-label_sale">
-						-% </span>
+					<div id="carouselExample" class="carousel slide">
+				  		<div class="carousel-inner">
+				  			<c:forEach var="imagesBookById" items="${bookById.images }" varStatus="loop">
+						  		<div class="carousel-item ${loop.index == 0 ? 'active' : '' }">
+									<img src="${imagesBookById.pathImage }" class="d-block w-100" alt="">
+								</div>
+							</c:forEach>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Previous</span>
+					  	</button>
+					  	<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						    <span class="visually-hidden">Next</span>
+					  	</button>
+					</div>
+					<span class="div_out-label_sale"> -${bookById.promotions[0].discountPromotion }% </span>
 				</div>
 				<div class="detail_product__info">
 					<div class="detail_product__info-title">
-						<span> abc </span>
+						<span> ${bookById.nameBook } </span>
 					</div>
 					<div class="detail_product__info-price">
-						<span class="detail_product__info-price-sale"> abc<ins>đ</ins>
-						</span> <span class="detail_product__info-price-origin"> <del>
-								abc
-								<ins>đ</ins>
-							</del>
+						<span class="detail_product__info-price-sale"> <fmt:formatNumber type="number" value="${(bookById.priceBook * (100 - bookById.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins>
+						</span> <span class="detail_product__info-price-origin"> 
+							<del>${bookById.priceBook }<ins>đ</ins></del>
 						</span>
 					</div>
 					<div class="detail_product__info-description">
-						<div
-							class="detail_product__info-description-author info-description-container">
+						<div class="detail_product__info-description-author info-description-container">
 							<span class="detail_product__info-description-author-key info-description-key"> Tác giả: </span>
-							<a href="#" class="detail_product__info-description-author-value"> abc </a>
+							<c:forEach var="authorsBookById" items="${bookById.authors }">
+								<a href="#" class="detail_product__info-description-author-value"> ${authorsBookById.nameAuthor } </a>
+							</c:forEach>
 						</div>
-						<div
-							class="detail_product__info-description-publishing_company info-description-container">
+						<div class="detail_product__info-description-supplier info-description-container">
+							<span class="detail_product__info-description-supplier-key info-description-key"> Công ty phát hành: </span> 
+							<span class="detail_product__info-description-supplier-value"> ${bookById.supplier.nameSupplier } </span>
+						</div>
+						<div class="detail_product__info-description-publishing_company info-description-container">
 							<span class="detail_product__info-description-publishing_company-key info-description-key"> Nhà xuất bản: </span> 
-							<span class="detail_product__info-description-publishing_company-value"> abc </span>
+							<span class="detail_product__info-description-publishing_company-value"> ${bookById.publisher.namePublisher } </span>
 						</div>
-						<div
-							class="detail_product__info-description-publishing_year info-description-container">
+						<div class="detail_product__info-description-publishing_year info-description-container">
 							<span class="detail_product__info-description-publishing_year-key info-description-key"> Năm xuất bản: </span>
-							<span class="detail_product__info-description-publishing_year-value"> abc </span>
+							<span class="detail_product__info-description-publishing_year-value"> ${bookById.yearPublicationBook } </span>
 						</div>
 					</div>
 					<div class="detail_product__info-content">
 						<span class="detail_product__info-content-key info-description-key"> Nội dung: </span> <br> 
-						<span class="detail_product__info-content-value"> Thế chấp ảnh nóng vay tiền, cô gái phơi thây ngoài đường.Thi thể người phụ nữ mất tích được tìm thấy trong bưu kiện.Ba nhân viên văn phòng cùng đột tử sau khi nhận thiệp mời dự tiệc. Bí ẩn len lỏi khắp nơi, tội ác rình rập mọi lúc. Cuộc sống hiện đại hãy còn đầy rẫy hiểm nguy giấu mình dưới lớp vỏ ngụy trang, ngày đêm chực chờ con mồi sập bẫy. Với quyết tâm tìm ra chân tướng, Từ Lãng và Chu Dung, hai “dạ hành giả” - kẻ săn tin,đã nhiều lần dấn thân chốn hiểm nguy, đối mặt với đủ loại tội phạm, hòng vạch trần sựthật đằng sau những vụ án lạ lùng, gióng lên hồi chuông cảnh tỉnh trước khi có thêm nhiều nạn nhân rơi vào cạm bẫy tội ác. Mỗi vụ án lại lạ lùng và độc đáo theo cách riêng, đôi khi còn khó nhằn, thậm chí nguy hiểm, song với bản năng nghề nghiệp mạnh mẽ cùng tinh thần chính nghĩa cao cả, hai kẻ săn tin vẫn miệt mài xông pha, tìm cho kì được sự thật đằng sau. Mỗi câu chuyện lại là một bài học quý giá, là kiến thức cần thiết để đối phó với những cạm bẫy ẩn giấu trong cuộc sống hiện đại hối hả. </span>
+						<span class="detail_product__info-content-value"> ${bookById.fullDescriptionBook } </span>
 					</div>
 					<div class="detail_product__info-version">
 						<span class="detail_product__info-version-key info-description-key"> Phiên bản </span> <br> 
 						<select name="" id="" class="detail_product__info-version-value">
-							<option value="">Bản thường</option>
+							<c:forEach var="versionsBookById" items="${bookById.versions }">
+								<option value="">${versionsBookById.nameVersion }</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="detail_product__quantity_box">
@@ -81,7 +107,7 @@
 		</div>
 		<div class="body__content-full">
 			<span> NỘI DUNG CHI TIẾT </span> <br>
-			<p>abc</p>
+			<p>${bookById.fullDescriptionBook }</p>
 		</div>
 		<div class="body__books_same_author">
 			<div class="books_same_author__title">
@@ -122,5 +148,6 @@
 	</div>
 	<!-- body -->
 	<jsp:include page="footer.jsp" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

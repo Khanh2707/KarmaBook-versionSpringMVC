@@ -43,6 +43,7 @@ public class Book {
 	List<Image> images;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@JoinTable(name = "karma.both_book_author",
 	joinColumns = {@JoinColumn(name = "idBookA", referencedColumnName = "idBook")},
 	inverseJoinColumns = {@JoinColumn(name = "idAuthor", referencedColumnName = "idAuthor")})
@@ -55,6 +56,7 @@ public class Book {
 	List<Category> categories;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@JoinTable(name = "karma.both_book_version",
 	joinColumns = {@JoinColumn(name = "idBookV", referencedColumnName = "idBook")},
 	inverseJoinColumns = {@JoinColumn(name = "idVersion", referencedColumnName = "idVersion")})

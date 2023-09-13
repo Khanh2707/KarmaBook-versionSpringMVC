@@ -20,9 +20,9 @@ public class LoginService implements LoginMethods {
 	}
 
 	@Override
-	public boolean RegisterUser(Role_User role_user) {
+	public boolean RegisterUser(User user) {
 		
-		return loginDAO.RegisterUser(role_user);
+		return loginDAO.RegisterUser(user);
 	}
 
 	@Override

@@ -36,13 +36,15 @@ public class LoginDAO implements LoginMethods {
 
 	@Override
 	@Transactional
-	public boolean RegisterUser(Role_User role_user) {
+	public boolean RegisterUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		try {
-			session.update(role_user);
+		int check = (int) session.save(user);
+		
+		if (check > 0) {
 			return true;
-		} catch (Exception e) {
+		}
+		else {
 			return false;
 		}
 	

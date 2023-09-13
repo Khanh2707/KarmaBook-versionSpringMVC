@@ -26,9 +26,8 @@ public class Role_User {
 	public Role_User() {
 	}
 
-	public Role_User(String nameRoleUser, List<User> users) {
+	public Role_User(String nameRoleUser) {
 		this.nameRoleUser = nameRoleUser;
-		this.users = users;
 	}
 
 	public List<User> getUsers() {
