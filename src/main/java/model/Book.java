@@ -50,6 +50,7 @@ public class Book {
 	List<Author> authors;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@JoinTable(name = "karma.both_book_category",
 	joinColumns = {@JoinColumn(name = "idBookC", referencedColumnName = "idBook")},
 	inverseJoinColumns = {@JoinColumn(name = "idCategory", referencedColumnName = "idCategory")})

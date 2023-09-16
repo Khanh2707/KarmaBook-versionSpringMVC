@@ -8,14 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
 <link rel="icon" type="image/x-icon" href="">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="resources/css/css_global/form.css">
-<link rel="stylesheet" href="resources/css/css_global/base.css">
 </head>
 <body>
+	<jsp:include page="../base.jsp" />
 	<jsp:include page="header.jsp" />
 	<!-- body -->
         <div class="body">
@@ -44,11 +40,10 @@
 
                             </span>
                         </div>
-                        <div class="sign_up-input_submit">
+                        <div class="sign_up-input_submit" id="ajaxLogin">
                             <button type="submit">Đăng nhập</button>
                         </div>
                     </div>
-                    <h1 id="ajaxLogin">Ajax login</h1>
                     <div class="sign_in-link_return">
                         <a href="register">Đăng ký</a>
                         <span>|</span>
@@ -77,7 +72,5 @@
 			],
 		})
 	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="resources/js/jquery.js"></script>
 </body>
 </html>

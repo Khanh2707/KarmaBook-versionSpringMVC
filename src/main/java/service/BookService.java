@@ -21,4 +21,10 @@ public class BookService implements BookMethods {
 		return bookDAO.getAllBook();
 	}
 
+	@Override
+	public List<Book> get10BookLatestById() {
+
+		return bookDAO.get10BookLatestById();
+	}
+
 }

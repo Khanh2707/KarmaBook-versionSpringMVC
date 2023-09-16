@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
 <link rel="icon" type="image/x-icon" href="">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="resources/css/home.css">
-<link rel="stylesheet" href="resources/css/css_global/base.css">
 </head>
 <body>
+	<jsp:include page="../base.jsp" />
 	<div class="wrapper">
 		<jsp:include page="header.jsp" />
 		<!-- body -->
@@ -94,57 +91,22 @@
 					</ul>
 
 					<!-- body__wrapper_product__menu -->
-					<div
-						class="wrapper_product__list_product-container_and_button_see_all">
+					<div class="wrapper_product__list_product-container_and_button_see_all">
 						<!-- body__wrapper_product__list_product -->
 						<div class="wrapper_product__list_product-container">
+							<c:forEach var="bookInTop10ById" items="${top10BookLatestById }">
 							<div class="list_product-div_out">
 								<div class="list_product-div_in">
 									<div class="list_product-div_in-img">
-										<a href="#"> <img src="https://placehold.co/220x330"
-											alt="">
-										</a>
+										<a href="product?idb=${bookInTop10ById.idBook }"><img src="${bookInTop10ById.images[0].pathImage }" alt=""></a>
 									</div>
 									<div class="list_product-div_in-info_book_short_des">
-										<span> <a href="#"> Placeholder </a>
+										<span> <a href="product?idb=${bookInTop10ById.idBook }"> ${bookInTop10ById.nameBook } </a>
 										</span>
 										<div class="div_in-price">
-											<span class="div_in-price-sale">100,000<ins>đ</ins></span> <span
-												class="div_in-price-origin"><del>
-													80,000
-													<ins>đ</ins>
-												</del></span>
-										</div>
-									</div>
-									<div class="div_in__choice_hover">
-										<div class="eye">
-											<i class="fa-solid fa-eye"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-bag-shopping"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-cart-shopping"></i>
-										</div>
-									</div>
-								</div>
-								<span class="div_out-label_sale">-20%</span>
-							</div>
-							
-							<div class="list_product-div_out">
-								<div class="list_product-div_in">
-									<div class="list_product-div_in-img">
-										<a href="#"> <img src="https://placehold.co/220x330"
-											alt="">
-										</a>
-									</div>
-									<div class="list_product-div_in-info_book_short_des">
-										<span> <a href="#"> Placeholder </a>
-										</span>
-										<div class="div_in-price">
-											<span class="div_in-price-sale">100,000<ins>đ</ins></span> 
+											<span class="div_in-price-sale"><fmt:formatNumber type="number" value="${(bookInTop10ById.priceBook * (100 - bookInTop10ById.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins></span>
 											<span class="div_in-price-origin">
-												<del>80,000<ins>đ</ins></del>
+												<del>${bookInTop10ById.priceBook }<ins>đ</ins></del>
 											</span>
 										</div>
 									</div>
@@ -160,173 +122,9 @@
 										</div>
 									</div>
 								</div>
-								<span class="div_out-label_sale">-20%</span>
+								<span class="div_out-label_sale">-${bookInTop10ById.promotions[0].discountPromotion }%</span>
 							</div>
-							
-							<div class="list_product-div_out">
-								<div class="list_product-div_in">
-									<div class="list_product-div_in-img">
-										<a href="#"> <img src="https://placehold.co/220x330"
-											alt="">
-										</a>
-									</div>
-									<div class="list_product-div_in-info_book_short_des">
-										<span> <a href="#"> Placeholder </a>
-										</span>
-										<div class="div_in-price">
-											<span class="div_in-price-sale">100,000<ins>đ</ins></span> <span
-												class="div_in-price-origin"><del>
-													80,000
-													<ins>đ</ins>
-												</del></span>
-										</div>
-									</div>
-									<div class="div_in__choice_hover">
-										<div class="eye">
-											<i class="fa-solid fa-eye"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-bag-shopping"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-cart-shopping"></i>
-										</div>
-									</div>
-								</div>
-								<span class="div_out-label_sale">-20%</span>
-							</div>
-							
-							<div class="list_product-div_out">
-								<div class="list_product-div_in">
-									<div class="list_product-div_in-img">
-										<a href="#"> <img src="https://placehold.co/220x330"
-											alt="">
-										</a>
-									</div>
-									<div class="list_product-div_in-info_book_short_des">
-										<span> <a href="#"> Placeholder </a>
-										</span>
-										<div class="div_in-price">
-											<span class="div_in-price-sale">100,000<ins>đ</ins></span> <span
-												class="div_in-price-origin"><del>
-													80,000
-													<ins>đ</ins>
-												</del></span>
-										</div>
-									</div>
-									<div class="div_in__choice_hover">
-										<div class="eye">
-											<i class="fa-solid fa-eye"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-bag-shopping"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-cart-shopping"></i>
-										</div>
-									</div>
-								</div>
-								<span class="div_out-label_sale">-20%</span>
-							</div>
-							
-							<div class="list_product-div_out">
-								<div class="list_product-div_in">
-									<div class="list_product-div_in-img">
-										<a href="#"> <img src="https://placehold.co/220x330"
-											alt="">
-										</a>
-									</div>
-									<div class="list_product-div_in-info_book_short_des">
-										<span> <a href="#"> Placeholder </a>
-										</span>
-										<div class="div_in-price">
-											<span class="div_in-price-sale">100,000<ins>đ</ins></span> <span
-												class="div_in-price-origin"><del>
-													80,000
-													<ins>đ</ins>
-												</del></span>
-										</div>
-									</div>
-									<div class="div_in__choice_hover">
-										<div class="eye">
-											<i class="fa-solid fa-eye"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-bag-shopping"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-cart-shopping"></i>
-										</div>
-									</div>
-								</div>
-								<span class="div_out-label_sale">-20%</span>
-							</div>
-							
-							<div class="list_product-div_out">
-								<div class="list_product-div_in">
-									<div class="list_product-div_in-img">
-										<a href="#"> <img src="https://placehold.co/220x330"
-											alt="">
-										</a>
-									</div>
-									<div class="list_product-div_in-info_book_short_des">
-										<span> <a href="#"> Placeholder </a>
-										</span>
-										<div class="div_in-price">
-											<span class="div_in-price-sale">100,000<ins>đ</ins></span> <span
-												class="div_in-price-origin"><del>
-													80,000
-													<ins>đ</ins>
-												</del></span>
-										</div>
-									</div>
-									<div class="div_in__choice_hover">
-										<div class="eye">
-											<i class="fa-solid fa-eye"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-bag-shopping"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-cart-shopping"></i>
-										</div>
-									</div>
-								</div>
-								<span class="div_out-label_sale">-20%</span>
-							</div>
-							
-							<div class="list_product-div_out">
-								<div class="list_product-div_in">
-									<div class="list_product-div_in-img">
-										<a href="#"> <img src="https://placehold.co/220x330"
-											alt="">
-										</a>
-									</div>
-									<div class="list_product-div_in-info_book_short_des">
-										<span> <a href="#"> Placeholder </a>
-										</span>
-										<div class="div_in-price">
-											<span class="div_in-price-sale">100,000<ins>đ</ins></span> <span
-												class="div_in-price-origin"><del>
-													80,000
-													<ins>đ</ins>
-												</del></span>
-										</div>
-									</div>
-									<div class="div_in__choice_hover">
-										<div class="eye">
-											<i class="fa-solid fa-eye"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-bag-shopping"></i>
-										</div>
-										<div>
-											<i class="fa-solid fa-cart-shopping"></i>
-										</div>
-									</div>
-								</div>
-								<span class="div_out-label_sale">-20%</span>
-							</div>
+							</c:forEach>
 							<!-- body__wrapper_product__button_see_more -->
 
 							<div class="wrapper_product__button_see_all" style="width: 100%;  
@@ -397,7 +195,5 @@
 		<!-- body -->
 		<jsp:include page="footer.jsp" />
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="resources/js/jquery.js"></script>
 </body>
 </html>

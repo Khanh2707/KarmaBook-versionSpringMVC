@@ -9,23 +9,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
-<link rel="icon" type="image/x-icon" href="">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<link rel="stylesheet" href="resources/css/css_global/base.css">
+<link rel="icon" type="image/x-icon" href="resources/image/logo/Karma-logo.png">
 <link rel="stylesheet" href="resources/css/detail_book.css">
 </head>
 <body>
+	<jsp:include page="../base.jsp" />
 	<jsp:include page="header.jsp" />
 	<c:set var="bookById" value="${bookById }" />
 	<div class="body">
 		<div class="body__path_category_product">
 			<a href="<c:url value="/" />">Trang chủ</a>
 			<span class="t">/</span>
-			<a href="#">abc</a>
+			<c:forEach var="categoriesBookById" items="${bookById.categories }">
+				<a href="#">${categoriesBookById.nameCategory }</a>
+			</c:forEach>
 			<span class="t">/</span>
 			<span>${bookById.nameBook }</span>
 		</div>
@@ -148,6 +145,5 @@
 	</div>
 	<!-- body -->
 	<jsp:include page="footer.jsp" />
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>

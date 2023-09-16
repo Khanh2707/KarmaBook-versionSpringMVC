@@ -307,7 +307,6 @@
 
 .header__menu__ul-1 {
     display: flex;
-    justify-content: center;
     list-style: none;
     padding-left: 0px;
     justify-content: space-evenly;
@@ -375,6 +374,6 @@
 }
 
 .hr--style {
-    border-top: 1px solid #F8F8FF;
+    border-top: 1px solid #E8E8E8;
 }
 /* header__menu */

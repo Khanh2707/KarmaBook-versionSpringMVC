@@ -9,14 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
 <link rel="icon" type="image/x-icon" href="">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="resources/css/css_global/header.css">
-<link rel="stylesheet" href="resources/css/css_global/base.css">
 </head>
 <body>
+	<jsp:include page="../base.jsp" />
 	<!-- header -->
 	<header class="header">
 
@@ -158,11 +154,13 @@
 			<div class="header__menu-container">
 				<ul class="header__menu__ul-1">
 					<li class="header__menu__li-1"><a
-						class="header__menu__li-1__a" href="#">trang chủ</a></li>
+						class="header__menu__li-1__a" href="<c:url value="/" />">trang chủ</a></li>
 					<li class="header__menu__li-1"><a
 						class="header__menu__li-1__a" href="collections">sản phẩm</a>
 						<ul class="header__menu__ul-2">
-							<li><a href="#"> </a></li>
+							<c:forEach var="category" items="${allCategory }">
+							<li><a href="#">${category.nameCategory }</a></li>
+							</c:forEach>
 						</ul></li>
 					<li class="header__menu__li-1"><a
 						class="header__menu__li-1__a" href="#">tin tức</a></li>

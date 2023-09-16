@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import database.KarmaJDBC;
 import model.Author;
 import model.Book;
+import model.Category;
 import model.Image;
 import model.Publisher;
 import model.Role_User;
 import model.Supplier;
 import model.Type_Image;
 import model.User;
+import service.BookService;
+import service.CategoryService;
 
 @Controller
 @RequestMapping("/")
@@ -113,8 +116,33 @@ public class homeController {
 //			System.out.println(book.toString());
 //		}
 		
+		
+		modelMap.addAttribute("top10BookLatestById", get10BookLatestById());
+		
+		modelMap.addAttribute("allCategory", getAllCategory());
+		
 		return "user/home";
 		
+	}
+	
+	@Autowired
+	BookService bookService;
+	
+	@Autowired
+	CategoryService categoryService;
+	
+	public List<Book> get10BookLatestById() {
+		
+		List<Book> books = bookService.get10BookLatestById();
+		
+		return books;
+	}
+	
+	public List<Category> getAllCategory() {
+		
+		List<Category> categories = categoryService.getAllCategory();
+		
+		return categories;
 	}
 	
 }

@@ -32,6 +32,16 @@ public class BookDAO implements BookMethods {
 		
 		return books;
 	}
+
+	@Override
+	@Transactional
+	public List<Book> get10BookLatestById() {
+		Session session = sessionFactory.getCurrentSession();
+		
+		List<Book> books = (List<Book>) session.createQuery("from karma.book order by idBook desc").setFirstResult(0).setMaxResults(10).getResultList();
+		
+		return books;
+	}
 	
 	
 }

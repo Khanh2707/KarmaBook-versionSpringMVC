@@ -10,18 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
 <link rel="icon" type="image/x-icon" href="">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-	integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="resources/css/collections.css">
-<link rel="stylesheet" href="resources/css/css_global/base.css">
 </head>
 <body>
+	<jsp:include page="../base.jsp" />
 	<jsp:include page="header.jsp" />
 	<div class="body">
 		<div class="body__path_category">
-			<a href="#">Trang chủ</a> 
+			<a href="<c:url value="/" />">Trang chủ</a> 
 			<span class="t">/</span> 
 			<span>Danh mục</span> 
 			<span class="t">/</span> 
@@ -56,7 +52,7 @@
 								</div>
 								<div class="list_product-div_in-info_book_short_des">
 									<span> 
-										<a href="product">
+										<a href="product?idb=${book.idBook }">
 											${book.nameBook }
 										</a>
 									</span>

@@ -14,9 +14,18 @@
     margin: 0px;
 }
 
-html {
+html, body {
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
+    
+    line-height: normal;
+}
+
+hr {
+	margin: 0;
+    color: inherit;
+    border: 0;
+    opacity: 1;
 }
 
 @keyframes fadeIn {
