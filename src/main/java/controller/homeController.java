@@ -119,8 +119,6 @@ public class homeController {
 		
 		modelMap.addAttribute("top10BookLatestById", get10BookLatestById());
 		
-		modelMap.addAttribute("allCategory", getAllCategory());
-		
 		return "user/home";
 		
 	}
@@ -128,21 +126,11 @@ public class homeController {
 	@Autowired
 	BookService bookService;
 	
-	@Autowired
-	CategoryService categoryService;
-	
 	public List<Book> get10BookLatestById() {
 		
 		List<Book> books = bookService.get10BookLatestById();
 		
 		return books;
-	}
-	
-	public List<Category> getAllCategory() {
-		
-		List<Category> categories = categoryService.getAllCategory();
-		
-		return categories;
 	}
 	
 }

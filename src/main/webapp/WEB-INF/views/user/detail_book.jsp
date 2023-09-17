@@ -16,6 +16,7 @@
 	<jsp:include page="../base.jsp" />
 	<jsp:include page="header.jsp" />
 	<c:set var="bookById" value="${bookById }" />
+	<span id="idVersionDisplayNone" style="display: none;">1</span>
 	<div class="body">
 		<div class="body__path_category_product">
 			<a href="<c:url value="/" />">Trang chủ</a>
@@ -24,7 +25,7 @@
 				<a href="#">${categoriesBookById.nameCategory }</a>
 			</c:forEach>
 			<span class="t">/</span>
-			<span>${bookById.nameBook }</span>
+			<span>${bookById.book_version[0].nameBookByVersion }</span>
 		</div>
 		<div class="body__detail_product">
 			<div class="detail_product__img_and_info">
@@ -50,12 +51,12 @@
 				</div>
 				<div class="detail_product__info">
 					<div class="detail_product__info-title">
-						<span> ${bookById.nameBook } </span>
+						<span> ${bookById.book_version[0].nameBookByVersion } </span>
 					</div>
 					<div class="detail_product__info-price">
-						<span class="detail_product__info-price-sale"> <fmt:formatNumber type="number" value="${(bookById.priceBook * (100 - bookById.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins>
+						<span class="detail_product__info-price-sale"> <fmt:formatNumber type="number" value="${(bookById.book_version[0].priceBookByVersion * (100 - bookById.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins>
 						</span> <span class="detail_product__info-price-origin"> 
-							<del>${bookById.priceBook }<ins>đ</ins></del>
+							<del><fmt:formatNumber type="number" value="${bookById.book_version[0].priceBookByVersion }" /><ins>đ</ins></del>
 						</span>
 					</div>
 					<div class="detail_product__info-description">
@@ -84,9 +85,9 @@
 					</div>
 					<div class="detail_product__info-version">
 						<span class="detail_product__info-version-key info-description-key"> Phiên bản </span> <br> 
-						<select name="" id="" class="detail_product__info-version-value">
-							<c:forEach var="versionsBookById" items="${bookById.versions }">
-								<option value="">${versionsBookById.nameVersion }</option>
+						<select name="" class="detail_product__info-version-value">
+							<c:forEach var="versionsBookById" items="${bookById.book_version }">
+								<option ${versionsBookById.version.idVersion == 1 ? 'selected' : ''} value="${versionsBookById.version.idVersion }">${versionsBookById.version.nameVersion }</option>
 							</c:forEach>
 						</select>
 					</div>

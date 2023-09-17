@@ -158,9 +158,7 @@
 					<li class="header__menu__li-1"><a
 						class="header__menu__li-1__a" href="collections">sản phẩm</a>
 						<ul class="header__menu__ul-2">
-							<c:forEach var="category" items="${allCategory }">
-							<li><a href="#">${category.nameCategory }</a></li>
-							</c:forEach>
+							<li><a href="#"></a></li>
 						</ul></li>
 					<li class="header__menu__li-1"><a
 						class="header__menu__li-1__a" href="#">tin tức</a></li>

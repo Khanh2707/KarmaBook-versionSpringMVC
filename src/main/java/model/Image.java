@@ -24,11 +24,23 @@ public class Image {
 	@JoinColumn(name = "idBook")
 	Book book;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idVersionI")
+	Version version;
+	
 	public Image() {	
 	}
 
 	public Image(String pathImage) {
 		this.pathImage = pathImage;
+	}
+
+	public Version getVersion() {
+		return version;
+	}
+
+	public void setVersion(Version version) {
+		this.version = version;
 	}
 
 	public Book getBook() {

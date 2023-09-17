@@ -8,8 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity(name = "karma.version")
 public class Version {
@@ -19,12 +18,21 @@ public class Version {
 	private int idVersion;
 	private String nameVersion;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "karma.both_book_version",
-	joinColumns = {@JoinColumn(name = "idVersion", referencedColumnName = "idVersion")},
-	inverseJoinColumns = {@JoinColumn(name = "idBookV", referencedColumnName = "idBook")})
-	List<Book> books;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idVersion")
+	List<Image> images;
 	
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	private List<Book_Version> book_version;
+	
+	public List<Book_Version> getBook_version() {
+		return book_version;
+	}
+
+	public void setBook_version(List<Book_Version> book_version) {
+		this.book_version = book_version;
+	}
+
 	public Version() {
 	}
 
@@ -32,12 +40,12 @@ public class Version {
 		this.nameVersion = nameVersion;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public List<Image> getImages() {
+		return images;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	public int getIdVersion() {

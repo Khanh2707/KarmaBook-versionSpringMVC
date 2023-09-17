@@ -24,4 +24,19 @@ $(document).ready(function() {
 			}
 		})
 	});
+	
+	$(".detail_product__info-version-value").on("change", function() {
+		let idVersion = $(".detail_product__info-version-value").val();
+		$.ajax({
+			url: "/KarmaBook-versionSpringMVC/api/SelectVersionBook",
+			type: "GET",
+			data: {
+				idVersion: idVersion
+			},
+			success: function(value) {
+				$("#idVersionDisplayNone").text(idVersion);
+			}
+		})
+	})
+	
 })

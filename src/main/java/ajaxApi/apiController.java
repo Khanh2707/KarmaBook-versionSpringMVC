@@ -43,4 +43,11 @@ public class apiController {
 		
 	}
 	
+	@GetMapping("SelectVersionBook")
+	@ResponseBody
+	public String SelectVersionBook(@RequestParam String idVersion, ModelMap modelMap) {
+		
+		return idVersion;
+	}
+	
 }

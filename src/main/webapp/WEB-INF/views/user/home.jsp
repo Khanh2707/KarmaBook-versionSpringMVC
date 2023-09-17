@@ -101,12 +101,12 @@
 										<a href="product?idb=${bookInTop10ById.idBook }"><img src="${bookInTop10ById.images[0].pathImage }" alt=""></a>
 									</div>
 									<div class="list_product-div_in-info_book_short_des">
-										<span> <a href="product?idb=${bookInTop10ById.idBook }"> ${bookInTop10ById.nameBook } </a>
+										<span> <a href="product?idb=${bookInTop10ById.idBook }"> ${bookInTop10ById.book_version[0].nameBookByVersion } </a>
 										</span>
 										<div class="div_in-price">
-											<span class="div_in-price-sale"><fmt:formatNumber type="number" value="${(bookInTop10ById.priceBook * (100 - bookInTop10ById.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins></span>
+											<span class="div_in-price-sale"><fmt:formatNumber type="number" value="${(bookInTop10ById.book_version[0].priceBookByVersion * (100 - bookInTop10ById.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins></span>
 											<span class="div_in-price-origin">
-												<del>${bookInTop10ById.priceBook }<ins>đ</ins></del>
+												<del><fmt:formatNumber type="number" value="${bookInTop10ById.book_version[0].priceBookByVersion }" /><ins>đ</ins></del>
 											</span>
 										</div>
 									</div>

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,8 +24,6 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBook;
-	private String nameBook;
-	private int priceBook;
 	private int yearPublicationBook;
 	private String shortDescriptionBook;
 	private String fullDescriptionBook;
@@ -58,25 +57,28 @@ public class Book {
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@LazyCollection(value = LazyCollectionOption.FALSE)
-	@JoinTable(name = "karma.both_book_version",
-	joinColumns = {@JoinColumn(name = "idBookV", referencedColumnName = "idBook")},
-	inverseJoinColumns = {@JoinColumn(name = "idVersion", referencedColumnName = "idVersion")})
-	List<Version> versions;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@JoinTable(name = "karma.both_book_promotion",
 	joinColumns = {@JoinColumn(name = "idBookP", referencedColumnName = "idBook")},
 	inverseJoinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName = "idPromotion")})
 	List<Promotion> promotions;
+	
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
+	private List<Book_Version> book_version;
+
+	public List<Book_Version> getBook_version() {
+		return book_version;
+	}
+
+	public void setBook_version(List<Book_Version> book_version) {
+		this.book_version = book_version;
+	}
 
 	public Book() {
 	}
 
-	public Book(String nameBook, int priceBook, int yearPublicationBook, String shortDescriptionBook,
+	public Book(int yearPublicationBook, String shortDescriptionBook,
 			String fullDescriptionBook, List<Image> images) {
-		this.nameBook = nameBook;
-		this.priceBook = priceBook;
 		this.yearPublicationBook = yearPublicationBook;
 		this.shortDescriptionBook = shortDescriptionBook;
 		this.fullDescriptionBook = fullDescriptionBook;
@@ -89,14 +91,6 @@ public class Book {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
-	}
-
-	public List<Version> getVersions() {
-		return versions;
-	}
-
-	public void setVersions(List<Version> versions) {
-		this.versions = versions;
 	}
 
 	public List<Promotion> getPromotions() {
@@ -147,22 +141,6 @@ public class Book {
 		this.idBook = idBook;
 	}
 
-	public String getNameBook() {
-		return nameBook;
-	}
-
-	public void setNameBook(String nameBook) {
-		this.nameBook = nameBook;
-	}
-
-	public int getPriceBook() {
-		return priceBook;
-	}
-
-	public void setPriceBook(int priceBook) {
-		this.priceBook = priceBook;
-	}
-
 	public int getYearPublicationBook() {
 		return yearPublicationBook;
 	}
@@ -189,9 +167,10 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [idBook=" + idBook + ", nameBook=" + nameBook + ", priceBook=" + priceBook
-				+ ", yearPublicationBook=" + yearPublicationBook + ", shortDescriptionBook=" + shortDescriptionBook
-				+ ", fullDescriptionBook=" + fullDescriptionBook + "]";
+		return "Book [idBook=" + idBook + ", yearPublicationBook=" + yearPublicationBook + ", shortDescriptionBook="
+				+ shortDescriptionBook + ", fullDescriptionBook=" + fullDescriptionBook + ", supplier=" + supplier
+				+ ", publisher=" + publisher + ", images=" + images + ", authors=" + authors + ", categories="
+				+ categories + ", promotions=" + promotions + ", book_version=" + book_version + "]";
 	}
 
 	

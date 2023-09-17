@@ -32,7 +32,6 @@ public class KarmaJDBC {
 			public Book mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Book b = new Book();
 				b.setIdBook(rs.getInt("idBook"));
-				b.setNameBook(rs.getString("nameBook"));
 				
 				return b;
 			}
