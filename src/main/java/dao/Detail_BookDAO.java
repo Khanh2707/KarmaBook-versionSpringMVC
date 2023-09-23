@@ -28,7 +28,9 @@ public class Detail_BookDAO implements Detail_BookMethods {
 	public Book getBookById(int idBook) {
 		Session session = sessionFactory.getCurrentSession();
 		
-		Book book = (Book) session.createQuery("FROM karma.book WHERE idBook = "+idBook+"").getSingleResult();
+//		Book book = (Book) session.createQuery("FROM karma.book WHERE idBook = "+idBook+"").getSingleResult();
+		
+		Book book = (Book) session.createQuery("FROM karma.book b join karma.both_book_version bbv WHERE b.idBook = "+idBook+" and idVersion = 1").getSingleResult();
 		
 		List<Image> images = (List<Image>) session.createQuery("FROM karma.image WHERE idBook = "+idBook+" and idVersionI = 1").getResultList();
 		
