@@ -25,6 +25,9 @@ public class Book_Version {
 	private int quantityBookByVersion;
 	private String nameBookByVersion;
 	private String priceBookByVersion;
+	private int yearPublicationBookByVersion;
+	private String shortDescriptionBookByVersion;
+	private String fullDescriptionBookByVersion;
 	
 	public Book_Version_Key getBook_version_Key() {
 		return book_version_Key;
@@ -62,6 +65,24 @@ public class Book_Version {
 	public void setPriceBookByVersion(String priceBookByVersion) {
 		this.priceBookByVersion = priceBookByVersion;
 	}
-
+	public int getYearPublicationBookByVersion() {
+		return yearPublicationBookByVersion;
+	}
+	public void setYearPublicationBookByVersion(int yearPublicationBookByVersion) {
+		this.yearPublicationBookByVersion = yearPublicationBookByVersion;
+	}
+	public String getShortDescriptionBookByVersion() {
+		return shortDescriptionBookByVersion;
+	}
+	public void setShortDescriptionBookByVersion(String shortDescriptionBookByVersion) {
+		this.shortDescriptionBookByVersion = shortDescriptionBookByVersion;
+	}
+	public String getFullDescriptionBookByVersion() {
+		return fullDescriptionBookByVersion;
+	}
+	public void setFullDescriptionBookByVersion(String fullDescriptionBookByVersion) {
+		this.fullDescriptionBookByVersion = fullDescriptionBookByVersion;
+	}
+	
 	
 }

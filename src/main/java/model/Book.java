@@ -24,9 +24,6 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBook;
-	private int yearPublicationBook;
-	private String shortDescriptionBook;
-	private String fullDescriptionBook;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idSupplier")
@@ -77,11 +74,7 @@ public class Book {
 	public Book() {
 	}
 
-	public Book(int yearPublicationBook, String shortDescriptionBook,
-			String fullDescriptionBook, List<Image> images) {
-		this.yearPublicationBook = yearPublicationBook;
-		this.shortDescriptionBook = shortDescriptionBook;
-		this.fullDescriptionBook = fullDescriptionBook;
+	public Book(List<Image> images) {
 		this.images = images;
 	}
 
@@ -141,36 +134,11 @@ public class Book {
 		this.idBook = idBook;
 	}
 
-	public int getYearPublicationBook() {
-		return yearPublicationBook;
-	}
-
-	public void setYearPublicationBook(int yearPublicationBook) {
-		this.yearPublicationBook = yearPublicationBook;
-	}
-
-	public String getShortDescriptionBook() {
-		return shortDescriptionBook;
-	}
-
-	public void setShortDescriptionBook(String shortDescriptionBook) {
-		this.shortDescriptionBook = shortDescriptionBook;
-	}
-
-	public String getFullDescriptionBook() {
-		return fullDescriptionBook;
-	}
-
-	public void setFullDescriptionBook(String fullDescriptionBook) {
-		this.fullDescriptionBook = fullDescriptionBook;
-	}
-
 	@Override
 	public String toString() {
-		return "Book [idBook=" + idBook + ", yearPublicationBook=" + yearPublicationBook + ", shortDescriptionBook="
-				+ shortDescriptionBook + ", fullDescriptionBook=" + fullDescriptionBook + ", supplier=" + supplier
-				+ ", publisher=" + publisher + ", images=" + images + ", authors=" + authors + ", categories="
-				+ categories + ", promotions=" + promotions + ", book_version=" + book_version + "]";
+		return "Book [idBook=" + idBook + ", supplier=" + supplier + ", publisher=" + publisher + ", images=" + images
+				+ ", authors=" + authors + ", categories=" + categories + ", promotions=" + promotions
+				+ ", book_version=" + book_version + "]";
 	}
 
 	

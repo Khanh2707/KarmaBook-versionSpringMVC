@@ -1,7 +1,11 @@
 package dbInterface;
 
-import model.Book;
+import java.util.List;
+
+import model.Book_Version;
+import model.Image;
 
 public interface Detail_BookMethods {
-	public Book getBookById(int idBook);
+	public Book_Version getVersionDefaultBookById(int idBook);
+	public List<Image> getImagesDefaultBookById(int idBook);
 }

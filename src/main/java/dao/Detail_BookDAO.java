@@ -25,20 +25,22 @@ public class Detail_BookDAO implements Detail_BookMethods {
 
 	@Override
 	@Transactional
-	public Book getBookById(int idBook) {
+	public Book_Version getVersionDefaultBookById(int idBook) {
 		Session session = sessionFactory.getCurrentSession();
+
+		Book_Version book_Version = (Book_Version) session.createQuery("FROM karma.both_book_version WHERE idBookV = "+idBook+" and idVersion = 1").getSingleResult();
 		
-//		Book book = (Book) session.createQuery("FROM karma.book WHERE idBook = "+idBook+"").getSingleResult();
-		
-		Book book = (Book) session.createQuery("FROM karma.book b join karma.both_book_version bbv WHERE b.idBook = "+idBook+" and idVersion = 1").getSingleResult();
+		return book_Version;
+	}
+
+	@Override
+	@Transactional
+	public List<Image> getImagesDefaultBookById(int idBook) {
+		Session session = sessionFactory.getCurrentSession();
 		
 		List<Image> images = (List<Image>) session.createQuery("FROM karma.image WHERE idBook = "+idBook+" and idVersionI = 1").getResultList();
 		
-		for (Image image : images) {
-			System.out.println(image);
-		}
-		
-		return book;
+		return images;
 	}
 
 }
