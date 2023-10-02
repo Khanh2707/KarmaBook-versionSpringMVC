@@ -17,6 +17,7 @@
 	<jsp:include page="header.jsp" />
 	<c:set var="versionDefaultBookById" value="${versionDefaultBookById }" />
 	<span id="idVersionDisplayNone" style="display: none;">1</span>
+	<input id="idBookDisplayNone" style="display: none;" value="${idb }" />
 	<div class="body">
 		<div class="body__path_category_product">
 			<a href="<c:url value="/" />">Trang chủ</a>
@@ -25,7 +26,7 @@
 				<a href="#">${categoriesVersionDefaultBookById.nameCategory }</a>
 			</c:forEach>
 			<span class="t">/</span>
-			<span></span>
+			<span>${versionDefaultBookById.nameBookByVersion }</span>
 		</div>
 		<div class="body__detail_product">
 			<div class="detail_product__img_and_info">

@@ -17,7 +17,7 @@ import model.Category;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class CategoryDAO implements CategoryMethods, Serializable {
+public class CategoryDAO implements CategoryMethods {
 	
 	@Autowired
 	SessionFactory sessionFactory;

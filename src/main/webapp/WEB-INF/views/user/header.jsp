@@ -101,8 +101,8 @@
 							<i class="fa-solid fa-cart-plus fa-2xl"></i> <span>7</span>
 						</div>
 						<div class="cart__text">
-							<span class="cart_text">Giỏ hàng</span><br> <span> </span> <span>7
-								sản phẩm</span>
+							<span class="cart_text">Giỏ hàng</span><br> <span> </span>
+							<span>7 sản phẩm</span>
 						</div>
 					</a>
 					<!-- No product: cart__cart_badge--hover--no_product -->
@@ -153,17 +153,21 @@
 		<div class="header__menu-bg">
 			<div class="header__menu-container">
 				<ul class="header__menu__ul-1">
-					<li class="header__menu__li-1"><a
-						class="header__menu__li-1__a" href="<c:url value="/" />">trang chủ</a></li>
-					<li class="header__menu__li-1"><a
-						class="header__menu__li-1__a" href="collections">sản phẩm</a>
+					<li class="header__menu__li-1">
+						<a class="header__menu__li-1__a" href="<c:url value="/" />">trang chủ</a>
+					</li>
+					<li class="header__menu__li-1">
+						<a class="header__menu__li-1__a" href="collections">sản phẩm</a>
 						<ul class="header__menu__ul-2">
-							<li><a href="#"></a></li>
-						</ul></li>
-					<li class="header__menu__li-1"><a
-						class="header__menu__li-1__a" href="#">tin tức</a></li>
-					<li class="header__menu__li-1"><a
-						class="header__menu__li-1__a" href="#">về karma</a></li>
+							<%-- <li><a href="#">${category }</a></li> --%>
+						</ul>
+					</li>
+					<li class="header__menu__li-1">
+						<a class="header__menu__li-1__a" href="#">tin tức</a>
+					</li>
+					<li class="header__menu__li-1">
+						<a class="header__menu__li-1__a" href="#">về karma</a>
+					</li>
 					<li id="tqlmn" class="header__menu__li-1" style="display: none;">
 						<a class="header__menu__li-1__a" href="#">Trang quản lý</a>
 					</li>
@@ -174,5 +178,24 @@
 		<!-- header__menu -->
 	</header>
 	<!-- header -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			loadCategory();
+		});
+		
+		function loadCategory() {
+			$.ajax({
+				url: 'https://jsonplaceholder.typicode.com/posts',
+				type: 'GET',
+				success: function(rs) {
+					var str = "";
+					$.each(rs, function(i, item) {
+						str += "<li><a href='#'>"+item.id+"</a></li>";
+					})
+					$('.header__menu__ul-2').html(str);
+				}
+			})
+		}
+	</script>
 </body>
 </html>

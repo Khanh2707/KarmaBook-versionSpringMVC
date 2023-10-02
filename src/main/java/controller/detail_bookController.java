@@ -30,6 +30,8 @@ public class detail_bookController {
 		modelMap.addAttribute("versionDefaultBookById", versionDefaultBookById);
 		modelMap.addAttribute("imagesDefaultBookById", imagesDefaultBookById);
 		
+		modelMap.addAttribute("idb", idb);
+		
 		return "user/detail_book";
 	}
 	
@@ -45,4 +47,5 @@ public class detail_bookController {
 
 		return detail_bookService.getImagesDefaultBookById(idBook);
 	}
+	
 }

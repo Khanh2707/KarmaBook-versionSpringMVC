@@ -1,7 +1,11 @@
 package ajaxApi;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import model.Book_Version;
+import model.Category;
 import model.User;
+import service.CategoryService;
 import service.LoginService;
 
 @Controller
@@ -45,9 +55,26 @@ public class apiController {
 	
 	@GetMapping("SelectVersionBook")
 	@ResponseBody
-	public String SelectVersionBook(@RequestParam String idVersion, ModelMap modelMap) {
+	@Transactional
+	public String SelectVersionBook(@RequestParam String idVersion, @RequestParam String idBook, ModelMap modelMap) {
+		Session session = sessionFactory.getCurrentSession();
+
+		Book_Version book_Version = (Book_Version) session.createQuery("FROM karma.both_book_version WHERE idBookV = "+idBook+" and idVersion = "+idVersion+"").getSingleResult();
 		
 		return idVersion;
+	}
+	
+	@Autowired
+	CategoryService categoryService;
+	
+	@GetMapping("GetAllCategory")
+	@ResponseBody
+	@Transactional
+	public String GetAllCategory() {
+		
+		List<Category> categories = categoryService.getAllCategory();
+		
+		return "";
 	}
 	
 }

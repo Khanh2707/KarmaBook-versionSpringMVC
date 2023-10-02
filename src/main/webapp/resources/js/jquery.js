@@ -27,11 +27,13 @@ $(document).ready(function() {
 	
 	$(".detail_product__info-version-value").on("change", function() {
 		let idVersion = $(".detail_product__info-version-value").val();
+		let idBook = $("#idBookDisplayNone").val();
 		$.ajax({
 			url: "/KarmaBook-versionSpringMVC/api/SelectVersionBook",
 			type: "GET",
 			data: {
-				idVersion: idVersion
+				idVersion: idVersion,
+				idBook: idBook
 			},
 			success: function(value) {
 				$("#idVersionDisplayNone").text(idVersion);
