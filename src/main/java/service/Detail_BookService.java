@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import dao.Detail_BookDAO;
 import dbInterface.Detail_BookMethods;
+import model.Author;
 import model.Book;
+import model.Book_Author;
 import model.Book_Version;
 import model.Image;
 
@@ -27,6 +29,12 @@ public class Detail_BookService implements Detail_BookMethods {
 	public List<Image> getImagesDefaultBookById(int idBook) {
 
 		return detail_bookDAO.getImagesDefaultBookById(idBook);
+	}
+
+	@Override
+	public List<Book_Author> getBookBySameAuthor(int idBook, List<Book_Author> authors) {
+
+		return detail_bookDAO.getBookBySameAuthor(idBook, authors);
 	}
 	
 }

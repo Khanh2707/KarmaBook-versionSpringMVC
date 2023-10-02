@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity(name = "karma.author")
 public class Author {
@@ -19,11 +20,8 @@ public class Author {
 	private int idAuthor;
 	private String nameAuthor;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "karma.both_book_author",
-	joinColumns = {@JoinColumn(name = "idAuthor", referencedColumnName = "idAuthor")},
-	inverseJoinColumns = {@JoinColumn(name = "idBookA", referencedColumnName = "idBook")})
-	List<Book> books;
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	private List<Book_Author> book_author;
 	
 	public Author() {
 	}
@@ -32,12 +30,12 @@ public class Author {
 		this.nameAuthor = nameAuthor;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public List<Book_Author> getBook_author() {
+		return book_author;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setBook_author(List<Book_Author> book_author) {
+		this.book_author = book_author;
 	}
 
 	public int getIdAuthor() {

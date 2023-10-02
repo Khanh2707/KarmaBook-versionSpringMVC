@@ -38,12 +38,9 @@ public class Book {
 	@JoinColumn(name = "idBook")
 	List<Image> images;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	@LazyCollection(value = LazyCollectionOption.FALSE)
-	@JoinTable(name = "karma.both_book_author",
-	joinColumns = {@JoinColumn(name = "idBookA", referencedColumnName = "idBook")},
-	inverseJoinColumns = {@JoinColumn(name = "idAuthor", referencedColumnName = "idAuthor")})
-	List<Author> authors;
+	private List<Book_Author> book_author;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@LazyCollection(value = LazyCollectionOption.FALSE)
@@ -94,12 +91,12 @@ public class Book {
 		this.promotions = promotions;
 	}
 
-	public List<Author> getAuthors() {
-		return authors;
+	public List<Book_Author> getBook_author() {
+		return book_author;
 	}
 
-	public void setAuthors(List<Author> authors) {
-		this.authors = authors;
+	public void setBook_author(List<Book_Author> book_author) {
+		this.book_author = book_author;
 	}
 
 	public List<Image> getImages() {
@@ -137,7 +134,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [idBook=" + idBook + ", supplier=" + supplier + ", publisher=" + publisher + ", images=" + images
-				+ ", authors=" + authors + ", categories=" + categories + ", promotions=" + promotions
+				+ ", book_author=" + book_author + ", categories=" + categories + ", promotions=" + promotions
 				+ ", book_version=" + book_version + "]";
 	}
 

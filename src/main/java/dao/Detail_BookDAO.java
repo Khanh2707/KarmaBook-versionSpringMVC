@@ -12,7 +12,9 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 
 import dbInterface.Detail_BookMethods;
+import model.Author;
 import model.Book;
+import model.Book_Author;
 import model.Book_Version;
 import model.Image;
 
@@ -41,6 +43,25 @@ public class Detail_BookDAO implements Detail_BookMethods {
 		List<Image> images = (List<Image>) session.createQuery("FROM karma.image WHERE idBook = "+idBook+" and idVersionI = 1").getResultList();
 		
 		return images;
+	}
+
+	@Override
+	@Transactional
+	public List<Book_Author> getBookBySameAuthor(int idBook, List<Book_Author> authors) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		String idAuthors = "";
+		
+		for (int i = 0; i < authors.size(); i++) {
+			if (i == authors.size() - 1)
+				idAuthors += Integer.toString(authors.get(i).getAuthor().getIdAuthor());
+			else
+				idAuthors += Integer.toString(authors.get(i).getAuthor().getIdAuthor()) + ", ";
+		}
+		
+		List<Book_Author> book_author_s = (List<Book_Author>) session.createQuery("FROM karma.both_book_author WHERE not idBookA = "+idBook+" and idAuthor in ("+idAuthors+")").getResultList();
+		
+		return book_author_s;
 	}
 
 }

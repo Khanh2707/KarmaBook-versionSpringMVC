@@ -21,23 +21,29 @@
 			<span class="t">/</span> 
 			<span>Danh mục</span> 
 			<span class="t">/</span> 
-			<span>abc</span>
+			<span>Tất cả</span>
 		</div>
 		<div class="body__container_filter_product">
 			<div class="container_filter_product__category">
 				<span class="category__title">danh mục</span>
 				<ul class="category__list">
-					<li><a href="#">abc</a></li>
+					<!-- <li><a href="#">abc</a></li> -->
 				</ul>
 			</div>
 			<div class="container_filter_product__page_product">
 				<div class="page_product__header">
-					<span class="page_product__header__title">abc</span>
+					<span class="page_product__header__title">Tất cả</span>
 					<div class="filter">
 						<span>Sắp xếp theo: </span>
 						<form action="" id="form_select">
 							<select name="list_select" id="list_select">
-								<option value="">abc</option>
+								<option value="">Giá: Tăng dần</option>
+								<option value="">Giá: Giảm dần</option>
+								<option value="">Tên: A-Z</option>
+								<option value="">Tên: Z-A</option>
+								<option value="">Cũ nhất</option>
+								<option value="" selected>Mới nhất</option>
+								<option value="">Bán chạy nhất</option>
 							</select>
 						</form>
 					</div>

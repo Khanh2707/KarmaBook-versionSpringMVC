@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import model.Author;
 import model.Book;
+import model.Book_Author;
 import model.Book_Version;
 import model.Category;
 import model.Image;
@@ -27,8 +29,12 @@ public class detail_bookController {
 		Book_Version versionDefaultBookById = getVersionDefaultBookById(idb);
 		List<Image> imagesDefaultBookById = getImagesDefaultBookById(idb);
 		
+		List<Book_Author> booksSameAuthor = getBookBySameAuthor(idb, versionDefaultBookById.getBook().getBook_author());
+		
 		modelMap.addAttribute("versionDefaultBookById", versionDefaultBookById);
 		modelMap.addAttribute("imagesDefaultBookById", imagesDefaultBookById);
+		
+		modelMap.addAttribute("booksSameAuthor", booksSameAuthor);
 		
 		modelMap.addAttribute("idb", idb);
 		
@@ -46,6 +52,11 @@ public class detail_bookController {
 	public List<Image> getImagesDefaultBookById(int idBook) {
 
 		return detail_bookService.getImagesDefaultBookById(idBook);
+	}
+	
+	public List<Book_Author> getBookBySameAuthor(int idBook, List<Book_Author> authors) {
+		
+		return detail_bookService.getBookBySameAuthor(idBook, authors);
 	}
 	
 }

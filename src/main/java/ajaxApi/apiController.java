@@ -1,6 +1,5 @@
 package ajaxApi;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -15,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.Book_Version;
 import model.Category;
@@ -67,14 +63,21 @@ public class apiController {
 	@Autowired
 	CategoryService categoryService;
 	
-	@GetMapping("GetAllCategory")
+	@GetMapping(path = "GetAllCategory", produces = "text/plain; charset = utf-8")
 	@ResponseBody
 	@Transactional
 	public String GetAllCategory() {
 		
 		List<Category> categories = categoryService.getAllCategory();
 		
-		return "";
+		String html = "";
+		
+		for (Category category : categories) {
+			html += "<li><a href='#'>"+category.getNameCategory()+"</a></li>";
+		}
+		
+		return html;
+		
 	}
 	
 }

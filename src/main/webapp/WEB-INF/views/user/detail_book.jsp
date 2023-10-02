@@ -63,8 +63,8 @@
 					<div class="detail_product__info-description">
 						<div class="detail_product__info-description-author info-description-container">
 							<span class="detail_product__info-description-author-key info-description-key"> Tác giả: </span>
-							<c:forEach var="authorsVersionDefaultBookById" items="${versionDefaultBookById.book.authors }">
-								<a href="#" class="detail_product__info-description-author-value"> ${authorsVersionDefaultBookById.nameAuthor } </a>
+							<c:forEach var="authorsVersionDefaultBookById" items="${versionDefaultBookById.book.book_author }">
+								<a href="#" class="detail_product__info-description-author-value"> ${authorsVersionDefaultBookById.author.nameAuthor } </a>
 							</c:forEach>
 						</div>
 						<div class="detail_product__info-description-supplier info-description-container">
@@ -113,18 +113,19 @@
 				<span> SÁCH CÙNG TÁC GIẢ </span>
 			</div>
 			<div class="books_same_author-container_product">
+				<c:forEach var="booksSameAuthor" items="${booksSameAuthor }">
 				<div class="list_product-div_out">
 					<div class="list_product-div_in">
 						<div class="list_product-div_in-img">
-							<a href="#"><img src="" alt=""></a>
+							<a href="product?idb=${booksSameAuthor.book.idBook }"><img src="${booksSameAuthor.book.images[0].pathImage }" alt=""></a>
 						</div>
 						<div class="list_product-div_in-info_book_short_des">
-							<span> <a href="#"> abc </a>
+							<span> <a href="product?idb=${booksSameAuthor.book.idBook }"> ${booksSameAuthor.book.book_version[0].nameBookByVersion } </a>
 							</span>
 							<div class="div_in-price">
-								<span class="div_in-price-sale">abc<ins>đ</ins></span> 
+								<span class="div_in-price-sale"><fmt:formatNumber type="number" value="${(booksSameAuthor.book.book_version[0].priceBookByVersion * (100 - booksSameAuthor.book.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins></span> 
 								<span class="div_in-price-origin"> 
-									<del>abc<ins>đ</ins></del>
+									<del><fmt:formatNumber type="number" value="${booksSameAuthor.book.book_version[0].priceBookByVersion }" /><ins>đ</ins></del>
 								</span>
 							</div>
 						</div>
@@ -140,8 +141,9 @@
 							</div>
 						</div>
 					</div>
-					<span class="div_out-label_sale">-%</span>
+					<span class="div_out-label_sale">-${booksSameAuthor.book.promotions[0].discountPromotion }%</span>
 				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

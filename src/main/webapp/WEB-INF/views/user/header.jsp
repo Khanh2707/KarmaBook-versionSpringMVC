@@ -185,14 +185,11 @@
 		
 		function loadCategory() {
 			$.ajax({
-				url: 'https://jsonplaceholder.typicode.com/posts',
+				url: '/KarmaBook-versionSpringMVC/api/GetAllCategory',
 				type: 'GET',
 				success: function(rs) {
-					var str = "";
-					$.each(rs, function(i, item) {
-						str += "<li><a href='#'>"+item.id+"</a></li>";
-					})
-					$('.header__menu__ul-2').html(str);
+					$('.header__menu__ul-2').html(rs);
+					$('.category__list').html(rs);
 				}
 			})
 		}
