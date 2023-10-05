@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Book_Category;
 import model.Book_Version;
 import model.Category;
@@ -36,13 +39,19 @@ public class apiController {
 	
 	@GetMapping("AuthenticationLogin")
 	@ResponseBody
-	public String AuthenticationLogin(@RequestParam String email, @RequestParam String password, ModelMap modelMap) {
+	public String AuthenticationLogin(@RequestParam String email, @RequestParam String password, ModelMap modelMap, HttpSession httpSession, HttpServletResponse httpServletResponse) {
 		
 		User user = loginService.AuthenticationLogin(email, password);
 		
 		modelMap.addAttribute("user", user);
 		
+		System.out.println(httpSession.getAttribute("user"));
+		httpSession.setMaxInactiveInterval(60);
+		
 		if (user != null) {
+			Cookie cookie = new Cookie("username", user.getUsername());
+			cookie.setMaxAge(60*60);
+			httpServletResponse.addCookie(cookie);
 			return "true";
 		}
 		else {
@@ -108,9 +117,9 @@ public class apiController {
 					+ "										</a>\r\n"
 					+ "									</span>\r\n"
 					+ "									<div class=\"div_in-price\">\r\n"
-					+ "										<span class=\"div_in-price-sale\"><fmt:formatNumber type=\"number\" value=\"("+book_Category.getBook().getBook_version().get(0).getPriceBookByVersion()+" * (100 - "+book_Category.getBook().getPromotions().get(0).getDiscountPromotion()+")) / 100 \" /><ins>đ</ins></span> \r\n"
+					+ "										<span class=\"div_in-price-sale\">("+book_Category.getBook().getBook_version().get(0).getPriceBookByVersion()+" * (100 - "+book_Category.getBook().getPromotions().get(0).getDiscountPromotion()+")) / 100<ins>đ</ins></span> \r\n"
 					+ "										<span class=\"div_in-price-origin\">\r\n"
-					+ "											<del><fmt:formatNumber type=\"number\" value=\""+book_Category.getBook().getBook_version().get(0).getPriceBookByVersion()+" \" /><ins>đ</ins></del>\r\n"
+					+ "											<del>"+book_Category.getBook().getBook_version().get(0).getPriceBookByVersion()+"<ins>đ</ins></del>\r\n"
 					+ "										</span>\r\n"
 					+ "									</div>\r\n"
 					+ "								</div>\r\n"

@@ -58,7 +58,7 @@ $(document).ready(function() {
 			success: function(value) {
 				$(".page_product__body").html(value);
 			}
-		})
+		});
 		window.history.pushState(null, null, "collections?category="+this.className+"");
 	});
 	

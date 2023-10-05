@@ -24,28 +24,14 @@
 				</div>
 				<!-- Are login: header__navbar-login--not_login -->
 				<!-- No login: header__navbar-login--are_login -->
-				<c:choose>
-					<c:when test="${user == null}">
-						<div class="header__navbar-login header__navbar-login--not_login">
-							<span class="navbar-login--not_login_text"> 
-								<a href="register">Đăng ký</a> | <a href="login">Đăng nhập</a>
-							</span> 
-							<span class="navbar-login--are_login_text"> 
-								<a href="#">Xin chào: ${user }</a> | <a href="#">Đăng xuất</a>
-							</span>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="header__navbar-login header__navbar-login--are_login">
-							<span class="navbar-login--not_login_text"> 
-								<a href="register">Đăng ký</a> | <a href="login">Đăng nhập</a>
-							</span> 
-							<span class="navbar-login--are_login_text"> 
-								<a href="#">Xin chào: ${user }</a> | <a href="#">Đăng xuất</a>
-							</span>
-						</div>
-					</c:otherwise>
-				</c:choose>
+				<div class="header__navbar-login header__navbar-login--${user == null ? 'not' : 'are' }_login">
+					<span class="navbar-login--not_login_text"> 
+						<a href="register">Đăng ký</a> | <a href="login">Đăng nhập</a>
+					</span> 
+					<span class="navbar-login--are_login_text"> 
+						<a href="#">Xin chào: ${user.name }</a> | <a href="logout">Đăng xuất</a>
+					</span>
+				</div>
 			</div>
 		</div>
 		<!-- header__navbar -->
@@ -96,7 +82,7 @@
 					</form>
 				</div>
 				<div class="header__cart">
-					<a href="#" class="header__cart-link">
+					<a href="cart" class="header__cart-link">
 						<div class="cart__cart_badge">
 							<i class="fa-solid fa-cart-plus fa-2xl"></i> <span>7</span>
 						</div>
