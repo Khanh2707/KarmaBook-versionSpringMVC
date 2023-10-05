@@ -49,8 +49,17 @@ $(document).ready(function() {
 	});
 	
 	$(".category__list").on("click", "li", function() {
+		$.ajax({
+			url: "/KarmaBook-versionSpringMVC/api/GetBookByCategory",
+			type: "GET",
+			data: {
+				idCategory: this.className,
+			},
+			success: function(value) {
+				$(".page_product__body").html(value);
+			}
+		})
 		window.history.pushState(null, null, "collections?category="+this.className+"");
-		
 	});
 	
 	$('.header__menu__ul-2').on("click", "li", function() {
