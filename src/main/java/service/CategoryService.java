@@ -20,5 +20,11 @@ public class CategoryService implements CategoryMethods {
 
 		return categoryDAO.getAllCategory();
 	}
+
+	@Override
+	public Category getCategoryById(int idCategory) {
+
+		return categoryDAO.getCategoryById(idCategory);
+	}
 	
 }

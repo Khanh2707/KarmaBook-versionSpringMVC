@@ -21,7 +21,7 @@
 			<span class="t">/</span> 
 			<span>Danh mục</span> 
 			<span class="t">/</span> 
-			<span>Tất cả</span>
+			<span>${category != null ? category.nameCategory : 'Tất cả' }</span>
 		</div>
 		<div class="body__container_filter_product">
 			<div class="container_filter_product__category">
@@ -32,7 +32,7 @@
 			</div>
 			<div class="container_filter_product__page_product">
 				<div class="page_product__header">
-					<span class="page_product__header__title">Tất cả</span>
+					<span class="page_product__header__title">${category != null ? category.nameCategory : 'Tất cả' }</span>
 					<div class="filter">
 						<span>Sắp xếp theo: </span>
 						<form action="" id="form_select">

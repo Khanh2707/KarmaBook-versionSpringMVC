@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 
 import dbInterface.CategoryMethods;
+import model.Book_Category;
 import model.Category;
 
 @Repository
@@ -30,6 +31,16 @@ public class CategoryDAO implements CategoryMethods {
 		List<Category> categories = (List<Category>) session.createQuery("FROM karma.category").getResultList();
 		
 		return categories;
+	}
+
+	@Override
+	@Transactional
+	public Category getCategoryById(int idCategory) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Category category = (Category) session.createQuery("FROM karma.category WHERE idCategory = "+idCategory+"").getSingleResult();
+		
+		return category;
 	}
 	
 	

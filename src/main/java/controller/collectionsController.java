@@ -11,7 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import model.Book;
 import model.Book_Category;
+import model.Category;
 import service.BookService;
+import service.CategoryService;
 import service.CollectionsService;
 
 @Controller
@@ -26,6 +28,9 @@ public class collectionsController {
 		
 		mav.addObject("bookByCategory", getBookByCategory(category.equals("all") ? 0 : Integer.valueOf(category)));
 		
+		if (!category.equals("all"))
+			mav.addObject("category", getCategoryById(Integer.valueOf(category)));
+		
 		return mav;
 		
 	}
@@ -36,5 +41,13 @@ public class collectionsController {
 	public List<Book_Category> getBookByCategory(int idCategory) {
 		
 		return collectionsService.getBookByCategory(idCategory);
+	}
+	
+	@Autowired
+	CategoryService categoryService;
+	
+	public Category getCategoryById(int idCategory) {
+
+		return categoryService.getCategoryById(idCategory);
 	}
 }
