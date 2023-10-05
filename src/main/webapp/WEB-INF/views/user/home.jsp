@@ -167,23 +167,27 @@
 							</div>
 							<a href="">[điểm sách] okitegami kyoko - thư tiến tử - đi tìm sự thật về kiệt tác cuối đời của một nhân vật tầm cỡ</a> 
 							<span>
-								Tiếp nối thành công của OKITEGAMI KYOKO - SỔ GHI CHÉP, tập thứ hai OKITEGAMI KYOKO - THƯ TIẾN CỬ thuộc loạt truyện về nàng thám tử lãng quên của cây bút gạo cội...
+								Tiếp nối thành công của OKITEGAMI KYOKO - SỔ GHI CHÉP, tập thứ hai OKITEGAMI KYOKO - THƯ TIẾN CỬ thuộc loạt truyện về nàng thám tử lãng quên của cây bút gạo cội NISIOISIN đã ra mắt bạn đọc trong tháng 5 này.
 							</span>
 							<hr>
 						</div>
 						<div class="post_div">
-							<a href=""><img src="" alt=""></a>
-							<a href="">[sự kiện] ipm chính thức khai trương tiktok shop cùng 1001 ưu đãi hấp dẫn!</a>
+							<div class="post_div_border_img">
+								<a href=""><img src="resources/image/news/thm_63f5a20d64ac4878a98d0698f1b64cd0_large.jpg" alt=""></a>
+							</div>
+							<a href="">[điểm sách] okitegami kyoko - thư tiến tử - đi tìm sự thật về kiệt tác cuối đời của một nhân vật tầm cỡ</a> 
 							<span>
-								Ngày 04.04.2023, IPM chính thức khai trương Tiktok Shop IPM Việt Nam, với mong muốn đưa các tựa sách hấp dẫn tiếp cận gần hơn tới các độc giả trên toàn quốc. Để chào mừng s...
+								Tiếp nối thành công của OKITEGAMI KYOKO - SỔ GHI CHÉP, tập thứ hai OKITEGAMI KYOKO - THƯ TIẾN CỬ thuộc loạt truyện về nàng thám tử lãng quên của cây bút gạo cội NISIOISIN đã ra mắt bạn đọc trong tháng 5 này.
 							</span>
 							<hr>
 						</div>
 						<div class="post_div">
-							<a href=""><img src="" alt=""></a>
-							<a href="">[sự kiện] gặp gỡ và ký tặng sách manga cùng bộ đôi tác giả "tình đầu nhạt phai"</a>
+							<div class="post_div_border_img">
+								<a href=""><img src="resources/image/news/thm_63f5a20d64ac4878a98d0698f1b64cd0_large.jpg" alt=""></a>
+							</div>
+							<a href="">[điểm sách] okitegami kyoko - thư tiến tử - đi tìm sự thật về kiệt tác cuối đời của một nhân vật tầm cỡ</a> 
 							<span>
-								Chiều ngày 25/2/2023, tại nhà sách Nguyễn Huệ (40 Nguyễn Huệ, P. Bến Nghé, Q. 1, TP. HCM) đã diễn ra sự kiện gặp gỡ và ký tặng cùng bộ đôi tác giả Wataru Hinekure và họa sĩ minh...
+								Tiếp nối thành công của OKITEGAMI KYOKO - SỔ GHI CHÉP, tập thứ hai OKITEGAMI KYOKO - THƯ TIẾN CỬ thuộc loạt truyện về nàng thám tử lãng quên của cây bút gạo cội NISIOISIN đã ra mắt bạn đọc trong tháng 5 này.
 							</span>
 							<hr>
 						</div>

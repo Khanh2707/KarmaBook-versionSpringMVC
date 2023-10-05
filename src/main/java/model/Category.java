@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity(name = "karma.category")
 public class Category {
@@ -19,11 +20,8 @@ public class Category {
 	private int idCategory;
 	private String nameCategory;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "karma.both_book_category",
-	joinColumns = {@JoinColumn(name = "idCategory", referencedColumnName = "idCategory")},
-	inverseJoinColumns = {@JoinColumn(name = "idBookC", referencedColumnName = "idBook")})
-	List<Book> books;
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	private List<Book_Category> book_category;
 	
 	public Category() {
 	}
@@ -31,13 +29,13 @@ public class Category {
 	public Category(String nameCategory) {
 		this.nameCategory = nameCategory;
 	}
-	
-	public List<Book> getBooks() {
-		return books;
+
+	public List<Book_Category> getBook_category() {
+		return book_category;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setBook_category(List<Book_Category> book_category) {
+		this.book_category = book_category;
 	}
 
 	public int getIdCategory() {

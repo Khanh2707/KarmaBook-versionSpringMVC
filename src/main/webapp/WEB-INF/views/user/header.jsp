@@ -157,7 +157,7 @@
 						<a class="header__menu__li-1__a" href="<c:url value="/" />">trang chủ</a>
 					</li>
 					<li class="header__menu__li-1">
-						<a class="header__menu__li-1__a" href="collections">sản phẩm</a>
+						<a class="header__menu__li-1__a" href="collections?category=all">sản phẩm</a>
 						<ul class="header__menu__ul-2">
 							<%-- <li><a href="#">${category }</a></li> --%>
 						</ul>

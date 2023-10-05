@@ -130,7 +130,6 @@
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 11;
-	overflow: hidden;
 	text-overflow: ellipsis;
 	line-height: 25px;
 }

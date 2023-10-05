@@ -42,12 +42,13 @@ public class Book {
 	@LazyCollection(value = LazyCollectionOption.FALSE)
 	private List<Book_Author> book_author;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	@LazyCollection(value = LazyCollectionOption.FALSE)
-	@JoinTable(name = "karma.both_book_category",
-	joinColumns = {@JoinColumn(name = "idBookC", referencedColumnName = "idBook")},
-	inverseJoinColumns = {@JoinColumn(name = "idCategory", referencedColumnName = "idCategory")})
-	List<Category> categories;
+	private List<Book_Category> book_category;
+	
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
+	private List<Book_Version> book_version;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@LazyCollection(value = LazyCollectionOption.FALSE)
@@ -55,10 +56,6 @@ public class Book {
 	joinColumns = {@JoinColumn(name = "idBookP", referencedColumnName = "idBook")},
 	inverseJoinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName = "idPromotion")})
 	List<Promotion> promotions;
-	
-	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
-	private List<Book_Version> book_version;
 
 	public List<Book_Version> getBook_version() {
 		return book_version;
@@ -75,12 +72,12 @@ public class Book {
 		this.images = images;
 	}
 
-	public List<Category> getCategories() {
-		return categories;
+	public List<Book_Category> getBook_category() {
+		return book_category;
 	}
 
-	public void setCategories(List<Category> categories) {
-		this.categories = categories;
+	public void setBook_category(List<Book_Category> book_category) {
+		this.book_category = book_category;
 	}
 
 	public List<Promotion> getPromotions() {
@@ -134,8 +131,8 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [idBook=" + idBook + ", supplier=" + supplier + ", publisher=" + publisher + ", images=" + images
-				+ ", book_author=" + book_author + ", categories=" + categories + ", promotions=" + promotions
-				+ ", book_version=" + book_version + "]";
+				+ ", book_author=" + book_author + ", book_category=" + book_category + ", book_version=" + book_version
+				+ ", promotions=" + promotions + "]";
 	}
 
 	

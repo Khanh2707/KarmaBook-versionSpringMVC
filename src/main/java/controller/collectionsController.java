@@ -6,34 +6,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import model.Book;
+import model.Book_Category;
 import service.BookService;
+import service.CollectionsService;
 
 @Controller
 @RequestMapping("collections")
 public class collectionsController {
 	
 	@GetMapping
-	public ModelAndView Default() {
+	public ModelAndView Default(@RequestParam("category") String category) {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("user/collections");
 		
-		mav.addObject("allBooks", getAllBook());
+		mav.addObject("bookByCategory", getBookByCategory(category.equals("all") ? 0 : Integer.valueOf(category)));
 		
 		return mav;
 		
 	}
 	
 	@Autowired
-	BookService bookService;
+	CollectionsService collectionsService;
 	
-	public List<Book> getAllBook() {
+	public List<Book_Category> getBookByCategory(int idCategory) {
 		
-		List<Book> books = bookService.getAllBook();
-		
-		return books;
+		return collectionsService.getBookByCategory(idCategory);
 	}
 }

@@ -2,6 +2,13 @@
  * 
  */
 $(document).ready(function() {
+	
+	window.onpopstate = function(e){
+		if(e.state){
+		    e.preventDefault();
+		}
+	};
+	
 	$("#ajaxLogin").click(function() {
 		let email = $("#email").val();
 		let password = $("#password").val();
@@ -39,6 +46,16 @@ $(document).ready(function() {
 				$("#idVersionDisplayNone").text(idVersion);
 			}
 		})
-	})
+	});
+	
+	$(".category__list").on("click", "li", function() {
+		window.history.pushState(null, null, "collections?category="+this.className+"");
+		
+	});
+	
+	$('.header__menu__ul-2').on("click", "li", function() {
+		window.location = "collections?category="+this.className+"";
+		
+	});
 	
 })

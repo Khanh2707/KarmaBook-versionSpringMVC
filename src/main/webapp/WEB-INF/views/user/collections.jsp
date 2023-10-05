@@ -49,23 +49,23 @@
 					</div>
 				</div>
 				<div class="page_product__body">
-				
-					<c:forEach var="book" items="${allBooks }">
+					
+					<c:forEach var="bookByCategory" items="${bookByCategory }">
 						<div class="list_product-div_out">
 							<div class="list_product-div_in">
 								<div class="list_product-div_in-img">
-									<a href="product?idb=${book.idBook }"><img src="${book.images[0].pathImage }" alt=""></a>
+									<a href="product?idb=${bookByCategory.book.idBook }"><img src="${bookByCategory.book.images[0].pathImage }" alt=""></a>
 								</div>
 								<div class="list_product-div_in-info_book_short_des">
 									<span> 
-										<a href="product?idb=${book.idBook }">
-											${book.book_version[0].nameBookByVersion }
+										<a href="product?idb=${bookByCategory.book.idBook }">
+											${bookByCategory.book.book_version[0].nameBookByVersion }
 										</a>
 									</span>
 									<div class="div_in-price">
-										<span class="div_in-price-sale"><fmt:formatNumber type="number" value="${(book.book_version[0].priceBookByVersion * (100 - book.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins></span> 
+										<span class="div_in-price-sale"><fmt:formatNumber type="number" value="${(bookByCategory.book.book_version[0].priceBookByVersion * (100 - bookByCategory.book.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins></span> 
 										<span class="div_in-price-origin">
-											<del><fmt:formatNumber type="number" value="${book.book_version[0].priceBookByVersion }" /><ins>đ</ins></del>
+											<del><fmt:formatNumber type="number" value="${bookByCategory.book.book_version[0].priceBookByVersion }" /><ins>đ</ins></del>
 										</span>
 									</div>
 								</div>
@@ -81,9 +81,10 @@
 									</div>
 								</div>
 							</div>
-							<span class="div_out-label_sale">-${book.promotions[0].discountPromotion }%</span>
+							<span class="div_out-label_sale">-${bookByCategory.book.promotions[0].discountPromotion }%</span>
 						</div>
 					</c:forEach>
+					
 				</div>
 
 				<div class="page_product__footer">

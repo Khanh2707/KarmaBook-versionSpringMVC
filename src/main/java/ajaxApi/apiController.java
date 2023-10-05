@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import model.Book_Category;
 import model.Book_Version;
 import model.Category;
 import model.User;
 import service.CategoryService;
+import service.CollectionsService;
 import service.LoginService;
 
 @Controller
@@ -73,11 +75,25 @@ public class apiController {
 		String html = "";
 		
 		for (Category category : categories) {
-			html += "<li><a href='#'>"+category.getNameCategory()+"</a></li>";
+			html += "<li class='"+category.getIdCategory()+"'><a href='#'>"+category.getNameCategory()+"</a></li>";
 		}
 		
 		return html;
 		
+	}
+	
+	@Autowired
+	CollectionsService collectionsService;
+	
+	@GetMapping(path = "GetBookByCategory", produces = "text/plain; charset = utf-8")
+	@ResponseBody
+	@Transactional
+	public String GetBookByCategory(@RequestParam String idCategory) {
+		Session session = sessionFactory.getCurrentSession();
+
+		List<Book_Category> book_category_s = (List<Book_Category>) session.createQuery("FROM karma.both_book_category WHERE idCategory = "+idCategory+"").getResultList();
+		
+		return idCategory;
 	}
 	
 }

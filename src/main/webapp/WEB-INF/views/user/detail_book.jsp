@@ -22,8 +22,8 @@
 		<div class="body__path_category_product">
 			<a href="<c:url value="/" />">Trang chủ</a>
 			<span class="t">/</span>
-			<c:forEach var="categoriesVersionDefaultBookById" items="${versionDefaultBookById.book.categories }">
-				<a href="#">${categoriesVersionDefaultBookById.nameCategory }</a>
+			<c:forEach var="categoriesVersionDefaultBookById" items="${versionDefaultBookById.book.book_category }">
+				<a href="#">${categoriesVersionDefaultBookById.category.nameCategory }</a>
 			</c:forEach>
 			<span class="t">/</span>
 			<span>${versionDefaultBookById.nameBookByVersion }</span>

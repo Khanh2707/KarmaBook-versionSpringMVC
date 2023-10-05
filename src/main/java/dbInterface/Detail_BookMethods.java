@@ -2,7 +2,6 @@ package dbInterface;
 
 import java.util.List;
 
-import model.Author;
 import model.Book_Author;
 import model.Book_Version;
 import model.Image;
