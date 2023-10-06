@@ -28,6 +28,10 @@ hr {
     opacity: 1;
 }
 
+.toast:not(.show) {
+    display: flex;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

@@ -25,7 +25,11 @@ public class forgot_passwordController {
 	@PostMapping
 	public String sendEmail(String username, @RequestParam String email) {
 		
-		emailService.sendEmail("Khánh", email, "FRIEND");
+		try {
+			emailService.sendEmail("Khánh", email, "FRIEND");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
 		return "user/forgot_password";
 		

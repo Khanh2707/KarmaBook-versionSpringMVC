@@ -25,18 +25,25 @@ $(document).ready(function() {
 					url = urlCurrent.replace("login", "");
 					setTimeout(() => {
 						window.location = url;
-					}, 10000);
+					}, 2000);
 					$.getScript('resources/js/toast/toast.js', function() {
 						toast({
 			                title: "Thành công!",
-			                message: "Bạn đã đăng ký thành công tài khoản tại F8.",
+			                message: "Bạn đã đăng nhập thành công.",
 			                type: "success",
 			                duration: 5000
 			            });
 					});
 				}
 				else {
-					alert("false");
+					$.getScript('resources/js/toast/toast.js', function() {
+						toast({
+			                title: "Thất bại!",
+			                message: "Tài khoản hoặc mật khẩu không đúng.",
+			                type: "error",
+			                duration: 5000
+			            });
+					});
 				}
 			}
 		})
