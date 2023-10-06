@@ -28,7 +28,7 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
     	<property name="dataSource" ref="dataSource" />
-    	<property name="packagesToScan" value="model" />
+    	<property name="packagesToScan" value="com.phuckhanh.model" />
     	<property name="hibernateProperties">
     		<props>
     			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -41,5 +41,20 @@
     	<property name="sessionFactory" ref="sessionFactory" />
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager" />
+    
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="username" value="nthtpk7h7i@gmail.com" />
+        <property name="password" value="kltlgkbkeobrikow" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
 
 </beans>

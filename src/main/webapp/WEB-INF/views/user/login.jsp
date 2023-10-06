@@ -47,7 +47,7 @@
                     <div class="sign_in-link_return">
                         <a href="register">Đăng ký</a>
                         <span>|</span>
-                        <a href="Forgot_pass.jsp">Quên mật khẩu?</a>
+                        <a href="reset">Quên mật khẩu?</a>
                     </div>
                     <div class="sign_up-container_link_button">
                         <button class="link_button_fb" type="button"><i class="fa-brands fa-facebook-f fa-xl"

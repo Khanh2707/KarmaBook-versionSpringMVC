@@ -23,7 +23,17 @@ $(document).ready(function() {
 				if (value == "true") {
 					urlCurrent = window.location.href;
 					url = urlCurrent.replace("login", "");
-					window.location = url;
+					setTimeout(() => {
+						window.location = url;
+					}, 10000);
+					$.getScript('resources/js/toast/toast.js', function() {
+						toast({
+			                title: "Thành công!",
+			                message: "Bạn đã đăng ký thành công tài khoản tại F8.",
+			                type: "success",
+			                duration: 5000
+			            });
+					});
 				}
 				else {
 					alert("false");
