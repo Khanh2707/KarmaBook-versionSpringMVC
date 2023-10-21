@@ -21,7 +21,7 @@
 			<span class="t">/</span> 
 			<span>Danh mục</span> 
 			<span class="t">/</span> 
-			<span>${category != null ? category.nameCategory : 'Tất cả' }</span>
+			<span id="breadcrumb_category">${category != null ? category.nameCategory : 'Tất cả' }</span>
 		</div>
 		<div class="body__container_filter_product">
 			<div class="container_filter_product__category">

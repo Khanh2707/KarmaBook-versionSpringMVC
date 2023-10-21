@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -133,8 +132,7 @@ public class apiController {
 		
 	}
 	
-	@Autowired
-	CollectionsService collectionsService;
+	public static String nameCategory;
 	
 	@GetMapping(path = "GetBookByCategory", produces = "text/plain; charset = utf-8")
 	@ResponseBody
@@ -143,6 +141,8 @@ public class apiController {
 		Session session = sessionFactory.getCurrentSession();
 
 		List<Book_Category> book_category_s = (List<Book_Category>) session.createQuery("FROM karma.both_book_category WHERE idCategory = "+idCategory+"").getResultList();
+		
+		nameCategory = book_category_s.get(0).getCategory().getNameCategory();
 		
 		String html = "";
 		
@@ -180,6 +180,15 @@ public class apiController {
 					+ "							<span class=\"div_out-label_sale\">-"+book_Category.getBook().getPromotions().get(0).getDiscountPromotion()+"%</span>\r\n"
 					+ "						</div>";
 		}
+		
+		return html;
+	}
+	
+	@GetMapping(path = "GetCategoryById", produces = "text/plain; charset = utf-8")
+	@ResponseBody
+	public String GetCategoryById(@RequestParam String idCategory) {
+		
+		String html = nameCategory;
 		
 		return html;
 	}
