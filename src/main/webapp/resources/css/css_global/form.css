@@ -60,7 +60,6 @@
 
 .sign_up-input_submit {
     width: 100%;
-    text-align: center;
     margin-bottom: 10px;
 }
 
@@ -88,6 +87,7 @@
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
+    text-align: center;
 }
 
 .sign_up-input_submit input:hover {

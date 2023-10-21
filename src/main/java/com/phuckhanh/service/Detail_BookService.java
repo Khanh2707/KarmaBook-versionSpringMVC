@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.phuckhanh.dao.Detail_BookDAO;
 import com.phuckhanh.dbInterface.Detail_BookMethods;
-import com.phuckhanh.model.Author;
-import com.phuckhanh.model.Book;
 import com.phuckhanh.model.Book_Author;
 import com.phuckhanh.model.Book_Version;
 import com.phuckhanh.model.Image;

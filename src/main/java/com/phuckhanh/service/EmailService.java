@@ -14,13 +14,13 @@ public class EmailService implements EmailMethods {
 	private JavaMailSender mailSender;
 	
 	@Override
-	public void sendEmail(String username, String userEmail, String result) {
+	public void sendEmail(String userEmail, String result) {
 		
 		SimpleMailMessage newEmail = new SimpleMailMessage();
 		
 		newEmail.setTo(userEmail);
 		newEmail.setSubject("Reset password");
-		newEmail.setText("Hi" + username + "Code is: " + result);
+		newEmail.setText("Hi " + userEmail + "\nCode is: " + result);
 		
 		mailSender.send(newEmail);
 	}

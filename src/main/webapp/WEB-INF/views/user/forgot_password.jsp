@@ -21,7 +21,7 @@
             <hr>
             <div class="sign_up__wrapper">
                 <div class="sign_up__container">
-                    <form action="" method="post" class="form" id="form-1">
+                    <form class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="email">Email</label>
@@ -31,7 +31,7 @@
 
                             </span>
                         </div>
-                        <div class="sign_up-input_submit">
+                        <div id="button_submit_forgot_password" class="sign_up-input_submit">
                             <input type="submit" value="Gửi">
                         </div>
                     </form>
@@ -51,6 +51,9 @@
 			formGroup : `.sign_up-infor-div`,
 			rules : [ required(`#email`, `Chưa nhập email!`),
 					ruleEmail(`#email`, `Email không đúng định dạng!`), ],
+			submitSuccess: function(data) {
+				console.log(data);
+			}
 		})
 	</script>
 </body>

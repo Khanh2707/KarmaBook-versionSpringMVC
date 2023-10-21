@@ -19,20 +19,20 @@ public class forgot_passwordController {
 		return "user/forgot_password";
 	}
 	
-	@Autowired
-	EmailService emailService;
+//	@Autowired
+//	EmailService emailService;
 	
-	@PostMapping
-	public String sendEmail(String username, @RequestParam String email) {
-		
-		try {
-			emailService.sendEmail("Khánh", email, "FRIEND");
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		return "user/forgot_password";
-		
-	}
+//	@PostMapping
+//	public String sendEmail(String username, @RequestParam String email) {
+//		
+//		try {
+//			emailService.sendEmail("Khánh", email, "FRIEND");
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		
+//		return "user/forgot_password";
+//		
+//	}
 	
 }

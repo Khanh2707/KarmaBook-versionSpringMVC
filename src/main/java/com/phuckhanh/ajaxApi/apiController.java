@@ -1,6 +1,7 @@
 package com.phuckhanh.ajaxApi;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.transaction.Transactional;
 
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +23,7 @@ import com.phuckhanh.model.Category;
 import com.phuckhanh.model.User;
 import com.phuckhanh.service.CategoryService;
 import com.phuckhanh.service.CollectionsService;
+import com.phuckhanh.service.EmailService;
 import com.phuckhanh.service.LoginService;
 
 import jakarta.servlet.http.Cookie;
@@ -63,6 +66,39 @@ public class apiController {
 		else {
 			return "false";
 		}
+		
+	}
+	
+	@Autowired
+	EmailService emailService;
+	
+	@GetMapping("SendEmail")
+	@ResponseBody
+	public String sendEmail(@RequestParam String email) {
+		
+		String alphabet = "ABCDEFGHIJKLMNOIPQRSTUVWXYZ";
+		
+		StringBuilder stringBuilder = new StringBuilder();
+		
+		Random random = new Random();
+		
+		int length = 7;
+		
+		for (int i = 0; i < length; i++) {
+			int index = random.nextInt(alphabet.length());
+			
+			char randomChar = alphabet.charAt(index);
+			
+			stringBuilder.append(randomChar);
+		}
+		
+		try {
+			emailService.sendEmail(email, stringBuilder.toString());
+		} catch (Exception e) {
+			return "false";
+		}
+		
+		return "true";
 		
 	}
 	

@@ -49,6 +49,39 @@ $(document).ready(function() {
 		})
 	});
 	
+	$("#button_submit_forgot_password").click(function() {
+   		let email = $("#email").val();
+		$.ajax({
+			url: "/KarmaBook-versionSpringMVC/api/SendEmail",
+			type: "GET",
+			data: {
+				email: email,
+			},
+			success: function(value) {
+				if (value == "true") {
+					$.getScript('resources/js/toast/toast.js', function() {
+						toast({
+				            title: "Thành công!",
+				            message: "Gửi email thành công.",
+				            type: "success",
+				            duration: 5000
+				           });
+					});
+				}
+				else {
+					$.getScript('resources/js/toast/toast.js', function() {
+						toast({
+				            title: "Thất bại!",
+				            message: "Gửi email thất bại.",
+				            type: "error",
+				            duration: 5000
+				        });
+					});
+				}
+			}
+		})
+	});
+	
 	$(".detail_product__info-version-value").on("change", function() {
 		let idVersion = $(".detail_product__info-version-value").val();
 		let idBook = $("#idBookDisplayNone").val();
@@ -71,11 +104,10 @@ $(document).ready(function() {
 			type: "GET",
 			data: {
 				idCategory: this.className,
-			},
-			success: function(value) {
-				$(".page_product__body").html(value);
 			}
-		});
+		}).done(function(value) {
+			$(".page_product__body").html(value);
+		})
 		window.history.pushState(null, null, "collections?category="+this.className+"");
 	});
 	

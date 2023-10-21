@@ -21,7 +21,7 @@
             <hr>
             <div class="sign_up__wrapper">
                 <div class="sign_up__container">
-                    <div class="form" id="form-1">
+                    <form class="form" id="form-1">
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="email">Tên đăng nhập</label>
@@ -41,9 +41,9 @@
                             </span>
                         </div>
                         <div class="sign_up-input_submit" id="ajaxLogin">
-                            <button type="submit">Đăng nhập</button>
+                            <input type="submit" value="Đăng nhập">
                         </div>
-                    </div>
+                    </form>
                     <div class="sign_in-link_return">
                         <a href="register">Đăng ký</a>
                         <span>|</span>
@@ -70,6 +70,9 @@
 					required(`#password`, `Chưa nhập password!`),
 			// required(`input[name="gender"]`, `Chưa chọn giới tính!`),
 			],
+			submitSuccess: function(data) {
+				console.log(data);
+			}
 		})
 	</script>
 </body>
