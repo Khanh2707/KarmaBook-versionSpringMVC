@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
-<link rel="icon" type="image/x-icon" href="">
+<!-- <link rel="icon" type="image/x-icon" href=""> -->
 <link rel="stylesheet" href="resources/css/css_global/header.css">
 </head>
 <body>
@@ -172,11 +172,7 @@
 		function loadCategory() {
 			$.ajax({
 				url: '/KarmaBook-versionSpringMVC/apiCategory/getAllCategory',
-				type: 'GET',
-				success: function(rs) {
-					$('.header__menu__ul-2').html(rs);
-					$('.category__list').html(rs);
-				}
+				type: 'GET'
 			}).done(function(rs) {
 				$('.header__menu__ul-2').html(rs);
 				$('.category__list').html(rs);

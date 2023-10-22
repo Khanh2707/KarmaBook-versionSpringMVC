@@ -22,9 +22,6 @@ import com.phuckhanh.service.CollectionsService;
 @RequestMapping("apiCategory/")
 public class apiCategory {
 	
-	public static String nameCategory;
-	
-	
 	@Autowired
 	CategoryService categoryService;
 	
@@ -52,8 +49,6 @@ public class apiCategory {
 	public String getBookByCategory(@RequestParam String idCategory) {
 
 		List<Book_Category> book_category_s = collectionsService.getBookByCategory(Integer.valueOf(idCategory));
-		
-		nameCategory = book_category_s.get(0).getCategory().getNameCategory();
 		
 		String html = "";
 		
@@ -99,7 +94,7 @@ public class apiCategory {
 	@ResponseBody
 	public String getCategoryById(@RequestParam String idCategory) {
 		
-		String html = nameCategory;
+		String html = categoryService.getCategoryById(Integer.valueOf(idCategory)).getNameCategory();
 		
 		return html;
 	}

@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
-<link rel="icon" type="image/x-icon" href="resources/image/logo/Karma-logo.png">
+<!-- <link rel="icon" type="image/x-icon" href=""> -->
 <link rel="stylesheet" href="resources/css/detail_book.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
 			<a href="<c:url value="/" />">Trang chủ</a>
 			<span class="t">/</span>
 			<c:forEach var="categoriesVersionDefaultBookById" items="${versionDefaultBookById.book.book_category }">
-				<a href="#">${categoriesVersionDefaultBookById.category.nameCategory }</a>
+				<a href="collections?category=${categoriesVersionDefaultBookById.category.idCategory }">${categoriesVersionDefaultBookById.category.nameCategory }</a>
 			</c:forEach>
 			<span class="t">/</span>
 			<span>${versionDefaultBookById.nameBookByVersion }</span>
