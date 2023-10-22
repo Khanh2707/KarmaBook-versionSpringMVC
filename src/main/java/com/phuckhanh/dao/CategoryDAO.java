@@ -1,6 +1,5 @@
 package com.phuckhanh.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 
 import com.phuckhanh.dbInterface.CategoryMethods;
-import com.phuckhanh.model.Book_Category;
 import com.phuckhanh.model.Category;
 
 @Repository

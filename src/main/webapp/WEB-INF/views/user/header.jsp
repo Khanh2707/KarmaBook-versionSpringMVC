@@ -171,12 +171,15 @@
 		
 		function loadCategory() {
 			$.ajax({
-				url: '/KarmaBook-versionSpringMVC/api/GetAllCategory',
+				url: '/KarmaBook-versionSpringMVC/apiCategory/getAllCategory',
 				type: 'GET',
 				success: function(rs) {
 					$('.header__menu__ul-2').html(rs);
 					$('.category__list').html(rs);
 				}
+			}).done(function(rs) {
+				$('.header__menu__ul-2').html(rs);
+				$('.category__list').html(rs);
 			})
 		}
 	</script>

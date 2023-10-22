@@ -1,7 +1,6 @@
 package com.phuckhanh.ajaxApi;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.transaction.Transactional;
 
@@ -9,116 +8,29 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.phuckhanh.model.Book_Category;
-import com.phuckhanh.model.Book_Version;
 import com.phuckhanh.model.Category;
-import com.phuckhanh.model.User;
 import com.phuckhanh.service.CategoryService;
 import com.phuckhanh.service.CollectionsService;
-import com.phuckhanh.service.EmailService;
-import com.phuckhanh.service.LoginService;
-
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("api/")
-@SessionAttributes("user")
-public class apiController {
+@RequestMapping("apiCategory/")
+public class apiCategory {
 	
-	@Autowired
-	SessionFactory sessionFactory;
+	public static String nameCategory;
 	
-	@Autowired
-	LoginService loginService;
-	
-	@GetMapping("AuthenticationLogin")
-	@ResponseBody
-	public String AuthenticationLogin(@RequestParam String email, @RequestParam String password, ModelMap modelMap, HttpSession httpSession, HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) {
-		
-		User user = loginService.AuthenticationLogin(email, password);
-		
-		modelMap.addAttribute("user", user);
-		
-		httpSession.setMaxInactiveInterval(60);
-		
-		if (user != null) {
-			Cookie cookie = new Cookie("username", user.getUsername());
-			cookie.setMaxAge(60*60);
-			httpServletResponse.addCookie(cookie);
-			Cookie[] cookies = httpServletRequest.getCookies();
-			for (Cookie cookie2 : cookies) {
-				System.out.println(cookie2.getName()+" - "+cookie2.getValue());
-			}
-			System.out.println("---------");
-			return "true";
-		}
-		else {
-			return "false";
-		}
-		
-	}
-	
-	@Autowired
-	EmailService emailService;
-	
-	@GetMapping("SendEmail")
-	@ResponseBody
-	public String sendEmail(@RequestParam String email) {
-		
-		String alphabet = "ABCDEFGHIJKLMNOIPQRSTUVWXYZ";
-		
-		StringBuilder stringBuilder = new StringBuilder();
-		
-		Random random = new Random();
-		
-		int length = 7;
-		
-		for (int i = 0; i < length; i++) {
-			int index = random.nextInt(alphabet.length());
-			
-			char randomChar = alphabet.charAt(index);
-			
-			stringBuilder.append(randomChar);
-		}
-		
-		try {
-			emailService.sendEmail(email, stringBuilder.toString());
-		} catch (Exception e) {
-			return "false";
-		}
-		
-		return "true";
-		
-	}
-	
-	@GetMapping("SelectVersionBook")
-	@ResponseBody
-	@Transactional
-	public String SelectVersionBook(@RequestParam String idVersion, @RequestParam String idBook, ModelMap modelMap) {
-		Session session = sessionFactory.getCurrentSession();
-
-		Book_Version book_Version = (Book_Version) session.createQuery("FROM karma.both_book_version WHERE idBookV = "+idBook+" and idVersion = "+idVersion+"").getSingleResult();
-		
-		return idVersion;
-	}
 	
 	@Autowired
 	CategoryService categoryService;
 	
-	@GetMapping(path = "GetAllCategory", produces = "text/plain; charset = utf-8")
+	@GetMapping(path = "getAllCategory", produces = "text/plain; charset = utf-8")
 	@ResponseBody
-	@Transactional
-	public String GetAllCategory() {
+	public String getAllCategory() {
 		
 		List<Category> categories = categoryService.getAllCategory();
 		
@@ -132,15 +44,14 @@ public class apiController {
 		
 	}
 	
-	public static String nameCategory;
+	@Autowired
+	CollectionsService collectionsService;
 	
-	@GetMapping(path = "GetBookByCategory", produces = "text/plain; charset = utf-8")
+	@GetMapping(path = "getBookByCategory", produces = "text/plain; charset = utf-8")
 	@ResponseBody
-	@Transactional
-	public String GetBookByCategory(@RequestParam String idCategory) {
-		Session session = sessionFactory.getCurrentSession();
+	public String getBookByCategory(@RequestParam String idCategory) {
 
-		List<Book_Category> book_category_s = (List<Book_Category>) session.createQuery("FROM karma.both_book_category WHERE idCategory = "+idCategory+"").getResultList();
+		List<Book_Category> book_category_s = collectionsService.getBookByCategory(Integer.valueOf(idCategory));
 		
 		nameCategory = book_category_s.get(0).getCategory().getNameCategory();
 		
@@ -184,9 +95,9 @@ public class apiController {
 		return html;
 	}
 	
-	@GetMapping(path = "GetCategoryById", produces = "text/plain; charset = utf-8")
+	@GetMapping(path = "getCategoryById", produces = "text/plain; charset = utf-8")
 	@ResponseBody
-	public String GetCategoryById(@RequestParam String idCategory) {
+	public String getCategoryById(@RequestParam String idCategory) {
 		
 		String html = nameCategory;
 		

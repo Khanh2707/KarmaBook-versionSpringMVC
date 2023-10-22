@@ -13,7 +13,7 @@ $(document).ready(function() {
 		let email = $("#email").val();
 		let password = $("#password").val();
 		$.ajax({
-			url: "/KarmaBook-versionSpringMVC/api/AuthenticationLogin",
+			url: "/KarmaBook-versionSpringMVC/apiLogin/authenticationLogin",
 			type: "GET",
 			data: {
 				email: email,
@@ -52,7 +52,7 @@ $(document).ready(function() {
 	$("#button_submit_forgot_password").click(function() {
    		let email = $("#email").val();
 		$.ajax({
-			url: "/KarmaBook-versionSpringMVC/api/SendEmail",
+			url: "/KarmaBook-versionSpringMVC/apiForgotPassword/sendEmail",
 			type: "GET",
 			data: {
 				email: email,
@@ -86,7 +86,7 @@ $(document).ready(function() {
 		let idVersion = $(".detail_product__info-version-value").val();
 		let idBook = $("#idBookDisplayNone").val();
 		$.ajax({
-			url: "/KarmaBook-versionSpringMVC/api/SelectVersionBook",
+			url: "/KarmaBook-versionSpringMVC/apiBook/selectVersionBook",
 			type: "GET",
 			data: {
 				idVersion: idVersion,
@@ -100,7 +100,7 @@ $(document).ready(function() {
 	
 	$(".category__list").on("click", "li", function() {
 		$.ajax({
-			url: "/KarmaBook-versionSpringMVC/api/GetBookByCategory",
+			url: "/KarmaBook-versionSpringMVC/apiCategory/getBookByCategory",
 			type: "GET",
 			data: {
 				idCategory: this.className,
@@ -110,7 +110,7 @@ $(document).ready(function() {
 		})
 		
 		$.ajax({
-			url: "/KarmaBook-versionSpringMVC/api/GetCategoryById",
+			url: "/KarmaBook-versionSpringMVC/apiCategory/getCategoryById",
 			type: "GET",
 			data: {
 				idCategory: this.className,

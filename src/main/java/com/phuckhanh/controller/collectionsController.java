@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.phuckhanh.model.Book;
 import com.phuckhanh.model.Book_Category;
 import com.phuckhanh.model.Category;
-import com.phuckhanh.service.BookService;
 import com.phuckhanh.service.CategoryService;
 import com.phuckhanh.service.CollectionsService;
 
