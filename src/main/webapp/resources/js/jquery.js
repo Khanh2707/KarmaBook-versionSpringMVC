@@ -93,7 +93,14 @@ $(document).ready(function() {
 				idBook: idBook
 			},
 			success: function(value) {
-				$("#idVersionDisplayNone").text(idVersion);
+				alert(value);
+				var str = "";
+				$.each(JSON.parse(value), function(i, item) {
+					str += "<tr>";
+					str += "<td>"+item.name+"</td>";
+					str += "</tr>"
+				})
+				$("#load_data").html(str);
 			}
 		})
 	});

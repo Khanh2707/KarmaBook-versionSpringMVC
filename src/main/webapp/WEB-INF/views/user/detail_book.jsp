@@ -16,8 +16,24 @@
 	<jsp:include page="../base.jsp" />
 	<jsp:include page="header.jsp" />
 	<c:set var="versionDefaultBookById" value="${versionDefaultBookById }" />
-	<span id="idVersionDisplayNone" style="display: none;">1</span>
 	<input id="idBookDisplayNone" style="display: none;" value="${idb }" />
+	
+	<div class="container">
+		<div class="row">
+			<h2>Danh sách</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Title</th>
+					</tr>
+				</thead>
+				<tbody id="load_data">
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
 	<div class="body">
 		<div class="body__path_category_product">
 			<a href="<c:url value="/" />">Trang chủ</a>

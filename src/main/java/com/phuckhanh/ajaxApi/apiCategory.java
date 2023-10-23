@@ -53,6 +53,7 @@ public class apiCategory {
 		String html = "";
 		
 		for (Book_Category book_Category : book_category_s) {
+			int salePrice = (Integer.valueOf(book_Category.getBook().getBook_version().get(0).getPriceBookByVersion()) * (100 - Integer.valueOf(book_Category.getBook().getPromotions().get(0).getDiscountPromotion()))) / 100;
 			html += "<div class=\"list_product-div_out\">\r\n"
 					+ "							<div class=\"list_product-div_in\">\r\n"
 					+ "								<div class=\"list_product-div_in-img\">\r\n"
@@ -65,7 +66,7 @@ public class apiCategory {
 					+ "										</a>\r\n"
 					+ "									</span>\r\n"
 					+ "									<div class=\"div_in-price\">\r\n"
-					+ "										<span class=\"div_in-price-sale\">("+book_Category.getBook().getBook_version().get(0).getPriceBookByVersion()+" * (100 - "+book_Category.getBook().getPromotions().get(0).getDiscountPromotion()+")) / 100<ins>đ</ins></span> \r\n"
+					+ "										<span class=\"div_in-price-sale\">"+salePrice+"<ins>đ</ins></span> \r\n"
 					+ "										<span class=\"div_in-price-origin\">\r\n"
 					+ "											<del>"+book_Category.getBook().getBook_version().get(0).getPriceBookByVersion()+"<ins>đ</ins></del>\r\n"
 					+ "										</span>\r\n"
