@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity(name = "karma.supplier")
 public class Supplier {
@@ -18,7 +22,7 @@ public class Supplier {
 	private int idSupplier;
 	private String nameSupplier;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idSupplier")
 	List<Book> books;
 	
@@ -52,11 +56,6 @@ public class Supplier {
 
 	public void setNameSupplier(String nameSupplier) {
 		this.nameSupplier = nameSupplier;
-	}
-
-	@Override
-	public String toString() {
-		return "Supplier [idSupplier=" + idSupplier + ", nameSupplier=" + nameSupplier + "]";
 	}
 	
 	

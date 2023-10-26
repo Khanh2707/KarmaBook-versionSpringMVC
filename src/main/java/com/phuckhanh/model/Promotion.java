@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class Promotion {
 	private short discountPromotion;
 	private String describePromotion;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "karma.both_book_promotion",
 	joinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName = "idPromotion")},
 	inverseJoinColumns = {@JoinColumn(name = "idBookP", referencedColumnName = "idBook")})

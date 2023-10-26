@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.phuckhanh.service.EmailService;
 
 @Controller
-@RequestMapping("reset")
 public class forgot_passwordController {
 
-	@GetMapping
+	@GetMapping("reset")
 	public String Default() {
 		
 		return "user/forgot_password";

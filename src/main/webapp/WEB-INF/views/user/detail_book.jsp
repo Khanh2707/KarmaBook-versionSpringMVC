@@ -18,22 +18,6 @@
 	<c:set var="versionDefaultBookById" value="${versionDefaultBookById }" />
 	<input id="idBookDisplayNone" style="display: none;" value="${idb }" />
 	
-	<div class="container">
-		<div class="row">
-			<h2>Danh sách</h2>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Title</th>
-					</tr>
-				</thead>
-				<tbody id="load_data">
-					
-				</tbody>
-			</table>
-		</div>
-	</div>
-	
 	<div class="body">
 		<div class="body__path_category_product">
 			<a href="<c:url value="/" />">Trang chủ</a>
@@ -42,7 +26,7 @@
 				<a href="collections?category=${categoriesVersionDefaultBookById.category.idCategory }">${categoriesVersionDefaultBookById.category.nameCategory }</a>
 			</c:forEach>
 			<span class="t">/</span>
-			<span>${versionDefaultBookById.nameBookByVersion }</span>
+			<span id="breadcrumb_name_book">${versionDefaultBookById.nameBookByVersion }</span>
 		</div>
 		<div class="body__detail_product">
 			<div class="detail_product__img_and_info">
@@ -51,7 +35,7 @@
 				  		<div class="carousel-inner">
 				  			<c:forEach var="imagesDefaultBookById" items="${imagesDefaultBookById }" varStatus="loop">
 						  		<div class="carousel-item ${loop.index == 0 ? 'active' : '' }">
-									<img src="${imagesDefaultBookById.pathImage }" class="d-block w-100" alt="">
+									<img class="imageBookByVersion" src="${imagesDefaultBookById.pathImage }" class="d-block w-100" alt="">
 								</div>
 							</c:forEach>
 						</div>
@@ -71,9 +55,11 @@
 						<span> ${versionDefaultBookById.nameBookByVersion } </span>
 					</div>
 					<div class="detail_product__info-price">
-						<span class="detail_product__info-price-sale"> <fmt:formatNumber type="number" value="${(versionDefaultBookById.priceBookByVersion * (100 - versionDefaultBookById.book.promotions[0].discountPromotion)) / 100 }" /><ins>đ</ins>
-						</span> <span class="detail_product__info-price-origin"> 
-							<del><fmt:formatNumber type="number" value="${versionDefaultBookById.priceBookByVersion }" /><ins>đ</ins></del>
+						<span class="detail_product__info-price-sale">
+							<span><fmt:formatNumber type="number" value="${(versionDefaultBookById.priceBookByVersion * (100 - versionDefaultBookById.book.promotions[0].discountPromotion)) / 100 }" /></span><ins>đ</ins>
+						</span>
+						<span class="detail_product__info-price-origin"> 
+							<del><span class="detail_product__info-price-origin_price"><fmt:formatNumber type="number" value="${versionDefaultBookById.priceBookByVersion }" /></span><ins>đ</ins></del>
 						</span>
 					</div>
 					<div class="detail_product__info-description">

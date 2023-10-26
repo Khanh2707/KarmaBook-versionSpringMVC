@@ -20,10 +20,9 @@ import com.phuckhanh.model.Version;
 import com.phuckhanh.service.Detail_BookService;
 
 @Controller
-@RequestMapping("product")
 public class detail_bookController {
 	
-	@GetMapping
+	@GetMapping("product")
 	public String Default(@RequestParam("idb") int idb, ModelMap modelMap) {
 		
 		Book_Version versionDefaultBookById = getVersionDefaultBookById(idb);

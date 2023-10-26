@@ -93,14 +93,24 @@ $(document).ready(function() {
 				idBook: idBook
 			},
 			success: function(value) {
-				alert(value);
-				var str = "";
-				$.each(JSON.parse(value), function(i, item) {
-					str += "<tr>";
-					str += "<td>"+item.name+"</td>";
-					str += "</tr>"
-				})
-				$("#load_data").html(str);
+				$("#breadcrumb_name_book").text(value.nameBookByVersion);
+				
+				$(".detail_product__info-title span").text(value.nameBookByVersion);
+				
+				let salePrice = (value.priceBookByVersion * (100 - value.book.promotions[0].discountPromotion)) / 100;
+				$(".detail_product__info-price-sale span").text(salePrice);
+				
+				$(".detail_product__info-price-origin_price").text(value.priceBookByVersion);
+				
+				let tagImg = "";
+				$.each(value.book.images, function(i, item) {
+					tagImg += `<div class="carousel-item ${i === 2 ? 'active' : '' }">
+									<img class="imageBookByVersion" src="${item.pathImage }" class="d-block w-100" alt="">
+								</div>`;
+				});
+				$(".carousel-inner").html(tagImg);
+				
+				console.log(value.book.book_version)
 			}
 		})
 	});

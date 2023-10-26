@@ -28,13 +28,12 @@ import com.phuckhanh.service.BookService;
 import com.phuckhanh.service.CategoryService;
 
 @Controller
-@RequestMapping("/")
 public class homeController {
 	
 	@Autowired
 	SessionFactory sessionFactory;
 
-	@GetMapping
+	@GetMapping("/")
 	@Transactional
 	public String Default(ModelMap modelMap) {
 		

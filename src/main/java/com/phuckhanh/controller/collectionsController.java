@@ -15,10 +15,9 @@ import com.phuckhanh.service.CategoryService;
 import com.phuckhanh.service.CollectionsService;
 
 @Controller
-@RequestMapping("collections")
 public class collectionsController {
 	
-	@GetMapping
+	@GetMapping("collections")
 	public ModelAndView Default(@RequestParam("category") String category) {
 		
 		ModelAndView mav = new ModelAndView();
