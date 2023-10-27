@@ -22,8 +22,7 @@ public class Supplier {
 	private int idSupplier;
 	private String nameSupplier;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "idSupplier")
+	@OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	List<Book> books;
 	
 	public Supplier() {

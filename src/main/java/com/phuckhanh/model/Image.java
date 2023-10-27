@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity(name = "karma.image")
@@ -16,15 +17,15 @@ public class Image {
 	private int idImage;
 	private String pathImage;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idType_Image")
 	Type_Image type_image;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idBook")
 	Book book;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idVersionI")
 	Version version;
 	

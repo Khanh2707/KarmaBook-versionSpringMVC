@@ -31,7 +31,7 @@ public class Detail_BookDAO implements Detail_BookMethods {
 		Session session = sessionFactory.getCurrentSession();
 
 		Book_Version book_Version = (Book_Version) session.createQuery("FROM karma.both_book_version WHERE idBookV = "+idBook+" and idVersion = 1").getSingleResult();
-		
+
 		return book_Version;
 	}
 

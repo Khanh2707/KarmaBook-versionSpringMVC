@@ -110,7 +110,8 @@ $(document).ready(function() {
 				});
 				$(".carousel-inner").html(tagImg);
 				
-				console.log(value.book.book_version)
+				console.log(value.version)
+				console.log(value.book)
 			}
 		})
 	});

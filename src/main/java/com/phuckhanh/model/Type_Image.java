@@ -26,8 +26,7 @@ public class Type_Image {
 	private String nameType_Image;
 	private String describeType_Image;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "idType_Image")
+	@OneToMany(mappedBy = "type_image", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	List<Image> images;
 	
 	public Type_Image() {

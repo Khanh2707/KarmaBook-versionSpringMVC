@@ -22,8 +22,7 @@ public class Publisher {
 	private int idPublisher;
 	private String namePublisher;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "idPublisher")
+	@OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	List<Book> books;
 	
 	public Publisher() {

@@ -11,13 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "idVersion")
 @Entity(name = "karma.version")
 public class Version {
 	
@@ -26,11 +26,13 @@ public class Version {
 	private int idVersion;
 	private String nameVersion;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idVersion")
+	@JsonIgnore
+	@OneToMany(mappedBy = "version", cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	List<Image> images;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	private List<Book_Version> book_version;
 	
 	public List<Book_Version> getBook_version() {

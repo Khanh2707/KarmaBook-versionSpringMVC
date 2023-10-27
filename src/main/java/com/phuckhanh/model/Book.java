@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -32,17 +33,16 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBook;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idSupplier")
 	Supplier supplier;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idPublisher")
 	Publisher publisher;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	@LazyCollection(value = LazyCollectionOption.FALSE)
-	@JoinColumn(name = "idBook")
 	List<Image> images;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
