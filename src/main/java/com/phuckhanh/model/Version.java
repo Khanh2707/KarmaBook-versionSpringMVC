@@ -4,20 +4,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
+@JsonIgnoreProperties({"images", "book_version"})
 @Entity(name = "karma.version")
 public class Version {
 	
@@ -26,13 +20,10 @@ public class Version {
 	private int idVersion;
 	private String nameVersion;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy = "version", cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
-	List<Image> images;
+	private List<Image> images;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
 	private List<Book_Version> book_version;
 	
 	public List<Book_Version> getBook_version() {

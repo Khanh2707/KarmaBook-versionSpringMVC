@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"books"})
 @Entity(name = "karma.promotion")
 public class Promotion {
 	
@@ -24,7 +26,7 @@ public class Promotion {
 	private short discountPromotion;
 	private String describePromotion;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "karma.both_book_promotion",
 	joinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName = "idPromotion")},
 	inverseJoinColumns = {@JoinColumn(name = "idBookP", referencedColumnName = "idBook")})

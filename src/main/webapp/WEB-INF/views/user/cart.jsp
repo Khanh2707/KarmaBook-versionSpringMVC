@@ -16,18 +16,18 @@
 	<jsp:include page="../base.jsp" />
 	<jsp:include page="header.jsp" />
 	<div class="body_bg">
-		<div class="cart_interface__title">
-			<span> GIỎ HÀNG </span> 
-			<span> ( sản phẩm) </span>
-		</div>
 		<div class="body">
+			<div class="cart_interface__title">
+				<span> GIỎ HÀNG </span> 
+				<span> (7 sản phẩm) </span>
+			</div>
 			<div class="cart_interface-container">
 				<div class="cart_interface-container__checkbox_cart">
 					<div class="checkbox_cart__navbar">
 						<div>
 							<input type="checkbox" name="" id="">
 						</div>
-						<span> Chọn tất cả ( sản phẩm) </span> 
+						<span> Chọn tất cả (7 sản phẩm) </span> 
 						<span> Số lượng </span> 
 						<span> Thành tiền </span>
 					</div>
@@ -38,34 +38,33 @@
 								<input type="checkbox" name="" id="">
 							</div>
 							<div class="checkbox_cart__infor_product-img">
-								<a href="#"><img src="" alt=""></a>
+								<a href="#"><img src="resources/image/book/Để Con Được Ốm(41)/ĐểConĐượcỐm(front).jpg" alt=""></a>
 							</div>
 							<div class="checkbox_cart__infor_product-name_and_price">
 								<a href="#" class="checkbox_cart__infor_product-name"> 
-									
+									Để Con Được Ốm
 								</a>
 								<div class="checkbox_cart__infor_product-price">
 									<span class="checkbox_cart__infor_product-price-sale">
-										<ins>đ</ins>
+										96,000<ins>đ</ins>
 									</span> 
 									<span class="checkbox_cart__infor_product-price-origin">
 										<del>
-											<ins>đ</ins>
+											120,000<ins>đ</ins>
 										</del>
 									</span>
 								</div>
 							</div>
 							<div class="checkbox_cart__infor_product-box-quantity">
-								<a href="#" class="checkbox_cart__infor_product-box-quantity-down" style="text-decoration: none"> - </a> 
+								<span class="checkbox_cart__infor_product-box-quantity-down"> - </span> 
 								<input type="text" name="" id="" value=""> 
-								<a href="#" class="checkbox_cart__infor_product-box-quantity-up" style="text-decoration: none"> + </a>
+								<span class="checkbox_cart__infor_product-box-quantity-up"> + </span>
 							</div>
 							<span class="checkbox_cart__infor_product-price-last">
-								<ins>đ</ins>
+								96,000<ins>đ</ins>
 							</span>
 							<div class="checkbox_cart__infor_product-trash">
-								<input type="hidden" name="id" value="">
-								<button style="background-color: white; border: none; cursor: pointer; font-size: 20px;" type="submit"><i class="fa-regular fa-trash-can"></i></button>
+								<button><i class="fa-regular fa-trash-can"></i></button>
 							</div>
 						</div>
 					</div>
@@ -75,7 +74,7 @@
 				<div class="cart_interface-container__pay_cart">
 					<div class="pay_cart__capital_sum">
 						<span> Tổng Số Tiền (gồm VAT) </span> 
-						<span> <ins>đ</ins> </span>
+						<span> 96,000<ins>đ</ins> </span>
 					</div>
 					<button class="pay_cart__button_pay" type="submit">
 						<span> Thanh toán </span>

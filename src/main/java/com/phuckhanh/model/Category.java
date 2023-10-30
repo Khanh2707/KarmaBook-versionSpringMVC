@@ -4,15 +4,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties({"book_category"})
 @Entity(name = "karma.category")
 public class Category {
 
@@ -21,7 +20,7 @@ public class Category {
 	private int idCategory;
 	private String nameCategory;
 	
-	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<Book_Category> book_category;
 	
 	public Category() {

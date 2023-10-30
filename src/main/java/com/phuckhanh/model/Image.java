@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"book"})
 @Entity(name = "karma.image")
 public class Image {
 	
@@ -19,15 +21,15 @@ public class Image {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idType_Image")
-	Type_Image type_image;
+	private Type_Image type_image;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idBook")
-	Book book;
+	private Book book;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idVersionI")
-	Version version;
+	private Version version;
 	
 	public Image() {	
 	}

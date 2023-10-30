@@ -4,19 +4,14 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "idType_Image")
+@JsonIgnoreProperties({"images"})
 @Entity(name = "karma.type_image")
 public class Type_Image {
 	
@@ -26,7 +21,7 @@ public class Type_Image {
 	private String nameType_Image;
 	private String describeType_Image;
 	
-	@OneToMany(mappedBy = "type_image", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "type_image", cascade = CascadeType.ALL)
 	List<Image> images;
 	
 	public Type_Image() {

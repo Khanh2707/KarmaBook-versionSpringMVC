@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity(name = "karma.role_user")
@@ -18,10 +17,8 @@ public class Role_User {
 	private int idRoleUser;
 	private String nameRoleUser;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idRoleUser")
+	@OneToMany(mappedBy = "role_user", cascade = CascadeType.ALL)
 	List<User> users;
-	
 	
 	public Role_User() {
 	}

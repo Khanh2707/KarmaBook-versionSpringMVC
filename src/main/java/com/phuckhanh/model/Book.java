@@ -1,11 +1,9 @@
 package com.phuckhanh.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,18 +12,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "idBook")
+@JsonIgnoreProperties({"book_author", "book_category", "book_version"})
 @Entity( name = "karma.book" )
 public class Book {
 
@@ -35,15 +28,14 @@ public class Book {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idSupplier")
-	Supplier supplier;
+	private Supplier supplier;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idPublisher")
-	Publisher publisher;
+	private Publisher publisher;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
-	List<Image> images;
+	private List<Image> images;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	@LazyCollection(value = LazyCollectionOption.FALSE)

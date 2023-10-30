@@ -1,36 +1,38 @@
 package com.phuckhanh.ajaxApi;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.phuckhanh.model.Book_Version;
+import com.phuckhanh.model.Image;
+import com.phuckhanh.service.Book_By_VersionService;
 
-@Controller
+@RestController
 @RequestMapping("apiBook/")
-@SessionAttributes("user")
 public class apiBook {
 	
 	@Autowired
-	SessionFactory sessionFactory;
+	Book_By_VersionService book_by_versionService;
 	
-	@GetMapping(path = "selectVersionBook", produces = "application/json; charset = utf-8")
-	@ResponseBody
-	@Transactional
-	public Book_Version selectVersionBook(@RequestParam String idVersion, @RequestParam String idBook) {
-		Session session = sessionFactory.getCurrentSession();
-
-		Book_Version book_Version = (Book_Version) session.createQuery("FROM karma.both_book_version WHERE idBookV = "+idBook+" and idVersion = "+idVersion+"").getSingleResult();
+	@GetMapping(path = "selectVersionBookById", produces = "application/json; charset = utf-8")
+	public Book_Version selectVersionBookById(@RequestParam String idVersion, @RequestParam String idBook) {
 		
-		return book_Version;
+		Book_Version book_by_version = book_by_versionService.getVersionBookById(Integer.valueOf(idBook), Integer.valueOf(idVersion));
+		
+		return book_by_version;
+	}
+	
+	@GetMapping(path = "selectImagesBookByVersion", produces = "application/json; charset = utf-8")
+	public List<Image> selectImagesBookByVersion(@RequestParam String idVersion, @RequestParam String idBook) {
+		
+		List<Image> imagesBookByVersion = book_by_versionService.getImagesBookByVersion(Integer.valueOf(idBook), Integer.valueOf(idVersion));
+		
+		return imagesBookByVersion;
 	}
 	
 }

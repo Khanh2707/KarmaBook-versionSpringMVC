@@ -6,18 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.phuckhanh.model.Author;
-import com.phuckhanh.model.Book;
 import com.phuckhanh.model.Book_Author;
 import com.phuckhanh.model.Book_Version;
-import com.phuckhanh.model.Category;
 import com.phuckhanh.model.Image;
-import com.phuckhanh.model.Version;
-import com.phuckhanh.service.Detail_BookService;
+import com.phuckhanh.service.Book_By_VersionService;
 
 @Controller
 public class detail_bookController {
@@ -41,21 +35,21 @@ public class detail_bookController {
 	}
 	
 	@Autowired
-	Detail_BookService detail_bookService;
+	Book_By_VersionService book_by_versionService;
 	
 	public Book_Version getVersionDefaultBookById(int idBook) {
 
-		return detail_bookService.getVersionDefaultBookById(idBook);
+		return book_by_versionService.getVersionDefaultBookById(idBook);
 	}
 	
 	public List<Image> getImagesDefaultBookById(int idBook) {
 
-		return detail_bookService.getImagesDefaultBookById(idBook);
+		return book_by_versionService.getImagesDefaultBookById(idBook);
 	}
 	
 	public List<Book_Author> getBookBySameAuthor(int idBook, List<Book_Author> authors) {
 		
-		return detail_bookService.getBookBySameAuthor(idBook, authors);
+		return book_by_versionService.getBookBySameAuthor(idBook, authors);
 	}
 	
 }
