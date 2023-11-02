@@ -8,7 +8,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@SessionAttributes("user")
 public class headerController {
 
 	@GetMapping("logout")

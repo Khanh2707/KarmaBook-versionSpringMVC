@@ -8,7 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
-<!-- <link rel="icon" type="image/x-icon" href=""> -->
 <link rel="stylesheet" href="resources/css/css_global/header.css">
 </head>
 <body>
@@ -143,7 +142,7 @@
 						<a class="header__menu__li-1__a" href="<c:url value="/" />">trang chủ</a>
 					</li>
 					<li class="header__menu__li-1">
-						<a class="header__menu__li-1__a" href="collections?category=all">sản phẩm</a>
+						<a class="header__menu__li-1__a" href="collections">sản phẩm</a>
 						<ul class="header__menu__ul-2">
 							<%-- <li><a href="#">${category }</a></li> --%>
 						</ul>

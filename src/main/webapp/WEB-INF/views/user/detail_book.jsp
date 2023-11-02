@@ -66,7 +66,7 @@
 						<div class="detail_product__info-description-author info-description-container">
 							<span class="detail_product__info-description-author-key info-description-key"> Tác giả: </span>
 							<c:forEach var="authorsVersionDefaultBookById" items="${versionDefaultBookById.book.book_author }">
-								<a href="#" class="detail_product__info-description-author-value"> ${authorsVersionDefaultBookById.author.nameAuthor } </a>
+								<a href="collections?author=${authorsVersionDefaultBookById.author.idAuthor }" class="detail_product__info-description-author-value"> ${authorsVersionDefaultBookById.author.nameAuthor } </a>
 							</c:forEach>
 						</div>
 						<div class="detail_product__info-description-supplier info-description-container">

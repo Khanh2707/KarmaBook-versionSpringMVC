@@ -30,6 +30,11 @@ public class Book_By_VersionDAO implements Book_By_VersionMethods {
 
 		Book_Version book_Version = (Book_Version) session.createQuery("FROM karma.both_book_version WHERE idBookV = "+idBook+" and idVersion = 1").getSingleResult();
 		
+		Hibernate.initialize(book_Version.getBook().getBook_author());
+		Hibernate.initialize(book_Version.getBook().getBook_category());
+		Hibernate.initialize(book_Version.getBook().getPromotions());
+		Hibernate.initialize(book_Version.getBook().getBook_version());
+		
 		return book_Version;
 	}
 
@@ -61,6 +66,8 @@ public class Book_By_VersionDAO implements Book_By_VersionMethods {
 		
 		for (Book_Author book_Author : book_author_s) {
 			Hibernate.initialize(book_Author.getBook().getImages());
+			Hibernate.initialize(book_Author.getBook().getBook_version());
+			Hibernate.initialize(book_Author.getBook().getPromotions());
 		}
 		
 		return book_author_s;
@@ -72,6 +79,9 @@ public class Book_By_VersionDAO implements Book_By_VersionMethods {
 		Session session = sessionFactory.getCurrentSession();
 
 		Book_Version book_Version = (Book_Version) session.createQuery("FROM karma.both_book_version WHERE idBookV = "+idBook+" and idVersion = "+idVersion+"").getSingleResult();
+		
+		Hibernate.initialize(book_Version.getBook().getImages());
+		Hibernate.initialize(book_Version.getBook().getPromotions());
 		
 		return book_Version;
 	}

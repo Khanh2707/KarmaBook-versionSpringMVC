@@ -13,9 +13,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"book_author", "book_category", "book_version"})
@@ -38,19 +35,15 @@ public class Book {
 	private List<Image> images;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
 	private List<Book_Author> book_author;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
 	private List<Book_Category> book_category;
 	
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
 	private List<Book_Version> book_version;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@JoinTable(name = "karma.both_book_promotion",
 	joinColumns = {@JoinColumn(name = "idBookP", referencedColumnName = "idBook")},
 	inverseJoinColumns = {@JoinColumn(name = "idPromotion", referencedColumnName = "idPromotion")})

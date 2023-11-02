@@ -12,12 +12,14 @@ $(document).ready(function() {
 	$("#ajaxLogin").click(function() {
 		let email = $("#email").val();
 		let password = $("#password").val();
+		const confirmCookie = document.getElementById("confirmCookie");
 		$.ajax({
 			url: "/KarmaBook-versionSpringMVC/apiLogin/authenticationLogin",
 			type: "GET",
 			data: {
 				email: email,
 				password: password,
+				confirmCookie: confirmCookie.checked ? "on" : "off",
 			},
 			success: function(value) {
 				if (value == "true") {

@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
-<!-- <link rel="icon" type="image/x-icon" href=""> -->
+<link rel="icon" type="image/x-icon" href="resources/image/logo/Karma-logo.png">
 <link rel="stylesheet" href="resources/css/css_global/form.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
                         <div class="sign_up-infor-div">
                             <div class="sign_up-infor">
                                 <label for="email">Tên đăng nhập</label>
-                                <input type="text" name="email" id="email" placeholder="Email" value="${requestScope.email }">
+                                <input type="text" name="email" id="email" placeholder="Email" value="${usernameCookie }">
                             </div>
                             <span class="form-mesg">
 
@@ -43,6 +43,10 @@
                         <div class="sign_up-input_submit" id="ajaxLogin">
                             <input type="submit" value="Đăng nhập">
                         </div>
+                        <div style="display: flex; height: 20px; align-content: center; margin: 15px 0 5px 0;">
+                                <input style="margin-right: 10px; width: 1rem; height: 1rem;" type="checkbox" checked="checked" name="confirmCookie" id="confirmCookie">
+                                <label for="confirmCookie">Ghi nhớ đăng nhập</label>
+						</div>
                     </form>
                     <div class="sign_in-link_return">
                         <a href="register">Đăng ký</a>
@@ -60,6 +64,8 @@
         </div>
     <!-- body -->
 	<jsp:include page="footer.jsp" />
+	<script src="resources/js/toast/toast.js"></script>
+	<script src="resources/js/jquery.js"></script>
 	<script src="resources/js/validate_form/validators.js"></script>
 	<script>
 		Validator({

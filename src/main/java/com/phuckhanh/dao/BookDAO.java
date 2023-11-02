@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,12 @@ public class BookDAO implements BookMethods {
 		Session session = sessionFactory.getCurrentSession();
 		
 		List<Book> books = (List<Book>) session.createQuery("from karma.book order by idBook desc").setFirstResult(0).setMaxResults(10).getResultList();
+		
+		for (Book book : books) {
+			Hibernate.initialize(book.getImages());
+			Hibernate.initialize(book.getBook_version());
+			Hibernate.initialize(book.getPromotions());
+		}
 		
 		return books;
 	}

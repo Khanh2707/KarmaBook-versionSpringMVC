@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nhà sách trực tuyến Karma</title>
-<!-- <link rel="icon" type="image/x-icon" href=""> -->
+<link rel="icon" type="image/x-icon" href="resources/image/logo/Karma-logo.png">
 <link rel="stylesheet" href="resources/css/collections.css">
 </head>
 <body>
@@ -21,7 +21,7 @@
 			<span class="t">/</span> 
 			<span>Danh mục</span> 
 			<span class="t">/</span> 
-			<span id="breadcrumb_category">${category != null ? category.nameCategory : 'Tất cả' }</span>
+			<span id="breadcrumb_category">${category != null ? category.nameCategory : author != null ? author.nameAuthor : 'Tất cả' }</span>
 		</div>
 		<div class="body__container_filter_product">
 			<div class="container_filter_product__category">
@@ -32,7 +32,7 @@
 			</div>
 			<div class="container_filter_product__page_product">
 				<div class="page_product__header">
-					<span class="page_product__header__title">${category != null ? category.nameCategory : 'Tất cả' }</span>
+					<span class="page_product__header__title">${category != null ? category.nameCategory : author != null ? author.nameAuthor : 'Tất cả' }</span>
 					<div class="filter">
 						<span>Sắp xếp theo: </span>
 						<form action="" id="form_select">
@@ -112,5 +112,7 @@
 	</div>
 	<!-- body -->
 	<jsp:include page="footer.jsp" />
+	<script src="resources/js/toast/toast.js"></script>
+	<script src="resources/js/jquery.js"></script>
 </body>
 </html>
