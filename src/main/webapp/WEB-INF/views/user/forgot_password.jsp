@@ -43,6 +43,7 @@
         </div>
     <!-- body -->
     <jsp:include page="footer.jsp" />
+    <script type="module" src="resources/js/jquery.js"></script>
 	<script src="resources/js/validate_form/validators.js"></script>
 	<script>
 		Validator({

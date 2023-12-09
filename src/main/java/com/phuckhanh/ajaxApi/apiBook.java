@@ -35,4 +35,13 @@ public class apiBook {
 		return imagesBookByVersion;
 	}
 	
+	@GetMapping(path = "getBooksByFilter", produces = "application/json; charset = utf-8")
+	public List<Book_Version> getBooksByFilter() {
+		
+		
+		
+		return null;
+	}
+	
+	
 }

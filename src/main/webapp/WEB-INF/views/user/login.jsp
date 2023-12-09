@@ -65,7 +65,7 @@
     <!-- body -->
 	<jsp:include page="footer.jsp" />
 	<script src="resources/js/toast/toast.js"></script>
-	<script src="resources/js/jquery.js"></script>
+	<script type="module" src="resources/js/jquery.js"></script>
 	<script src="resources/js/validate_form/validators.js"></script>
 	<script>
 		Validator({

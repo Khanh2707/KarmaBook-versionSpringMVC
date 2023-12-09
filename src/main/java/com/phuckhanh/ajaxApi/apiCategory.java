@@ -40,9 +40,9 @@ public class apiCategory {
 	@Autowired
 	CollectionsService collectionsService;
 	
-	@GetMapping(path = "getBookByCategory", produces = "text/plain; charset = utf-8")
+	@GetMapping(path = "getBooksByCategory", produces = "text/plain; charset = utf-8")
 	@ResponseBody
-	public String getBookByCategory(@RequestParam String idCategory) {
+	public String getBooksByCategory(@RequestParam String idCategory) {
 
 		List<Book_Category> book_category_s = collectionsService.getBookByCategory(Integer.valueOf(idCategory));
 		

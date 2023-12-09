@@ -198,6 +198,7 @@
 		</div>
 		<!-- body -->
 		<jsp:include page="footer.jsp" />
+		<script type="module" src="resources/js/jquery.js"></script>
 	</div>
 </body>
 </html>

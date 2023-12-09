@@ -237,12 +237,12 @@
     }
 }
 
-.page_product__footer {
+.pagination {
     display: flex;
     justify-content: space-between;
 }
 
-.page_product__footer__change_page {
+.pagination_button {
     width: 110px;
     height: 30px;
     text-align: center;
@@ -251,20 +251,21 @@
     border: 1px solid var(--text_black);
 }
 
-.page_product__footer__change_page a {
+.pagination_button a {
     text-decoration: none;
     color: var(--text_black);
 }
 
-.page_product__footer__change_page:hover {
+.pagination_button:hover {
     background-color: var(--main_color);
+    border: none;
 }
 
-.page_product__footer__change_page:hover a {
+.pagination_button:hover a {
     color: var(--white_color);
 }
 
-.page_product__footer__number_page a {
+.pagination__number a {
     display: inline-block;
     width: 30px;
     height: 30px;
@@ -276,9 +277,10 @@
     margin: 0px 3px;
 }
 
-.page_product__footer__number_page a:hover {
+.pagination__number a:hover {
     color: var(--white_color);
     background-color: var(--main_color);
+    border: none;
 }
 
 .activeNumPage {

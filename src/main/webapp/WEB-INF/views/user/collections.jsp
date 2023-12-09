@@ -87,32 +87,33 @@
 					
 				</div>
 
-				<div class="page_product__footer">
-                        <div class="page_product__footer__change_page page_product__footer__prev_page">
+				<div class="pagination">
+                        <div class="pagination_button pagination__prev">
                             <a href="">
                                 &lt Trang trước
                             </a>
                         </div>
-                        <div class="page_product__footer__number_page">
-                            <a href="">1</a>
+                        <div class="pagination__number">
+                            <a href="">1</a>	
                             <a href="">2</a>
                             <a href="">3</a>
                             <a href="">4</a>
                             <span>...</span>
                             <a href="">56</a>
                         </div>
-                        <div class="page_product__footer__change_page page_product__footer__next_page">
+                        <div class="pagination_button pagination__next">
                             <a href="">
                                 Trang sau &gt
                             </a>
                         </div>
-                    </div>
+                </div>
 			</div>
 		</div>
 	</div>
 	<!-- body -->
 	<jsp:include page="footer.jsp" />
 	<script src="resources/js/toast/toast.js"></script>
-	<script src="resources/js/jquery.js"></script>
+	<script type="module" src="resources/js/jquery.js"></script>
+	<script src="resources/js/pagination/pagination.js"></script>
 </body>
 </html>
